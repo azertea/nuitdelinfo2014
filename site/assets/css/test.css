@@ -16,12 +16,17 @@
   height: 100%;
 }
 
+
+.head-text {
+  margin-top: 30px;
+}
+
 .middle {
   margin-top: 70px;
 }
 
 .btn-login {
-  background-color: #fff;
+  background-color: #01DF01;
   border: 1px solid black;
 }
 
@@ -34,7 +39,7 @@
 .btn-main {
   height: 300px;
   width: 300px;
-  background-color: #01DF01
+  background-color: #01DF01;
 }
 
 .glyphicon-search, .glyphicon-user {
