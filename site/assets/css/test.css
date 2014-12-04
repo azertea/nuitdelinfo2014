@@ -5,12 +5,12 @@
   text-align: center;
 }
 
-.container-fluid {
+.container{
   width: 80%;
+  height: 100%;
   text-align: center;
 }
 
+
 .footer {
-  position: absolute;
-  bottom: 0;
 }
