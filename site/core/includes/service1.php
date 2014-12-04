@@ -1,21 +1,16 @@
 <?php 
 session_start();
 
-include_once '/core/database/db_functions.php';
-include_once '/core/includes/config.php';
+include_once('/core/database/db_functions.php');
+include_once('/core/includes/config.php');
 /*
-- Créer compte recherché
 
-- Créer profil
-
-- Se connecter public / Se connecter ONG
 
 - Modifier profil
 
 - Faire une recherche de public de la part d'un public : envoie une notif à ceux concernés
 - Faire une recherche de public de la part d'une ONG : envoie une notif à ceux concernés
 
-- Déconnexion
 
 */
 
@@ -197,5 +192,51 @@ public function estConnecte()
 public function seDeconnecter()
 {
 	unset($_SESSION['user']);
+}
+
+// retourne
+//  - (SER_ERR_DB) si problème avec la base
+//  - vrai si c'est un Utilisateur ONG ou si c'est un Utilisateur Public qui n'a pas encore crée son profil
+public function peutAjouterProfil()
+{
+	Utilisateur $user = $_SESSION['user'];
+	$nbProfile = 0;
+
+	if ($user->getIdType() == $TYPE_USER_ONG) {
+		return true;
+	}
+
+	try {
+		db_open();
+		$nbProfile = db_nbProfileFromUser($user);
+		db_close();
+	} catch (Exception $e) {
+		return $SER_ERR_DB;
+	}
+
+	return $nbProfile < 1;
+}
+
+// Retourne :
+//  - (SER_ERR_DB) si problème avec la base
+//  - la liste des profils pour l'utilisateur connecté
+public function listeProfil()
+{
+	$listProfile = array();
+
+	try {
+		db_open();
+		$listProfile = db_getProfilesFromUser($user);
+		db_close();
+	} catch (Exception $e) {
+		return $SER_ERR_DB;
+	}
+
+	return $listProfile;
+}
+
+public function serv_modificationProfil($new_nom, $new_prenom, $new_desc, $new_localisation, $new_telephone)
+{
+
 }
 ?>
