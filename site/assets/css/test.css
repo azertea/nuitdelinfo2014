@@ -16,6 +16,10 @@
   height: 100%;
 }
 
+.middle {
+  margin-top: 70px;
+}
+
 .btn-login {
   background-color: #fff;
   border: 1px solid black;
@@ -25,4 +29,9 @@
   font-family: helvetica;
   font-weight: 600;
   font-size: 25pt;
+}
+
+.btn-main {
+  height: 300px;
+  width: 300px;
 }
