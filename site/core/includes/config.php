@@ -15,7 +15,17 @@ $DB_CRD_PASSWORD = "azertea!2014";
 /*
 	Codes d'erreur
 */
+
+$SER_ERR_DB = -1;
 $SER_ERR_LOGIN = -2;
+$SER_ERR_PASS = -3;
+$SER_ERR_MAIL = -4;
+$SER_ERR_NOM = -5;
+$SER_ERR_PRENOM = -6;
+$SER_ERR_DESC = -7;
+$SER_ERR_LOCALISATION = -8;
+$SER_ERR_PHONE = -9;
+
 
 /*
 	Déclaration des types pour le routage de l'API vers les Services
