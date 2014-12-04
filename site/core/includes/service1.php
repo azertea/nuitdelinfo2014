@@ -102,6 +102,9 @@ public function serv_creerProfil($nom, $prenom, $desc, $localisation, $telephone
 //  - (SER_ERR_DB) si problème de connexion ou problème avec la base
 //  - (SER_ERR_LOGIN) si login invalide
 //  - (SER_ERR_PASS) si pass invalide
+//  - (SER_ERR_USER_NOT_FOUND) Utilisateur inconnu
+//  - (SER_ERR_USER_WRONG_TYPE) Utilisateur de mauvais type (pas public)
+//  - (SER_ERR_USER_WRONG_PWD) Mauvais mot de passe
 public function serv_connecterComptePublic($login, $pass)
 {
 	Utilisateur $user;
@@ -116,8 +119,20 @@ public function serv_connecterComptePublic($login, $pass)
 
 	try {
 		db_open();
-		$user = db_connectAccountPublic($login, sha1($pass));
+		$user = db_getUser($login);
 		db_close();
+
+		if (is_null($user)) {
+			return $SER_ERR_USER_NOT_FOUND;
+		}
+
+		if ($user->getIdType() != $TYPE_USER_PUBLIC) {
+			return $SER_ERR_USER_WRONG_TYPE;
+		}
+
+		if ($user->getPwd() != sha1($pass)) {
+			return $SER_ERR_USER_WRONG_PWD;
+		}
 	} catch (Exception $e) {
 		return $SER_ERR_DB;
 	}
@@ -127,5 +142,60 @@ public function serv_connecterComptePublic($login, $pass)
 	return true;
 }
 
+// Retourne
+//  - true si connecté
+//  - (SER_ERR_DB) si problème de connexion ou problème avec la base
+//  - (SER_ERR_LOGIN) si login invalide
+//  - (SER_ERR_PASS) si pass invalide
+//  - (SER_ERR_USER_NOT_FOUND) Utilisateur inconnu
+//  - (SER_ERR_USER_WRONG_TYPE) Utilisateur de mauvais type (pas public)
+//  - (SER_ERR_USER_WRONG_PWD) Mauvais mot de passe
+public function serv_connecterCompteONG($login, $pass)
+{
+	Utilisateur $user;
 
- ?>
+	if (empty($login)) {
+		return $SER_ERR_LOGIN;
+	}
+
+	if (empty($pass)) {
+		return $SER_ERR_PASS;
+	}
+
+	try {
+		db_open();
+		$user = db_getUser($login);
+		db_close();
+
+		if (is_null($user)) {
+			return $SER_ERR_USER_NOT_FOUND;
+		}
+
+		if ($user->getIdType() != $TYPE_USER_ONG) {
+			return $SER_ERR_USER_WRONG_TYPE;
+		}
+
+		if ($user->getPwd() != sha1($pass)) {
+			return $SER_ERR_USER_WRONG_PWD;
+		}
+	} catch (Exception $e) {
+		return $SER_ERR_DB;
+	}
+
+	$_SESSION['user'] = $user;
+
+	return true;
+}
+
+// Retourne
+//  - true si connecté
+public function estConnecte()
+{
+	return isset($_SESSION['user']);
+}
+
+public function seDeconnecter()
+{
+	unset($_SESSION['user']);
+}
+?>
