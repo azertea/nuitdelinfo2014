@@ -34,4 +34,16 @@
 .btn-main {
   height: 300px;
   width: 300px;
+  background-color: #01DF01
+}
+
+.glyphicon-search, .glyphicon-user {
+  font-size: 45pt;
+}
+
+
+
+.footer {
+  margin-top: 50px;
+  height: 70px;
 }
