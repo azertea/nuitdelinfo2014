@@ -104,6 +104,8 @@ public function serv_creerProfil($nom, $prenom, $desc, $localisation, $telephone
 //  - (SER_ERR_PASS) si pass invalide
 public function serv_connecterComptePublic($login, $pass)
 {
+	Utilisateur $user;
+
 	if (empty($login)) {
 		return $SER_ERR_LOGIN;
 	}
@@ -112,7 +114,17 @@ public function serv_connecterComptePublic($login, $pass)
 		return $SER_ERR_PASS;
 	}
 
+	try {
+		db_open();
+		$user = db_connectAccountPublic($login, sha1($pass));
+		db_close();
+	} catch (Exception $e) {
+		return $SER_ERR_DB;
+	}
 
+	$_SESSION['user'] = $user;
+
+	return true;
 }
 
 
