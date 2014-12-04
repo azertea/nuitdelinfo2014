@@ -1,2 +1,235 @@
 <?php
+/*Fichier aiguillage API */
+include_once ("../includes/config.php");
+include_once ("api_functions.php");
+
+/**
+
+ROUTAGE 
+
+**/
+
+switch ($_GET['type']) {
+	case $ROUTE_USER_PUBLIC :
+		handlerUserPublic();
+		break;
+	case $ROUTE_USER_ONG :
+		handlerUserONG();
+		break;
+	case $ROUTE_SEARCH:
+		handlerSearch();
+		break;
+	case $ROUTE_PROFIL:
+		handlerProfile();
+		break;
+
+}
+
+/**
+
+GESTION USER PUBLIC
+
+*/
+
+function handlerUserPublic(){
+	switch ($_GET['method']) {
+		case $ROUTE_METHOD_ADD:
+			methodAddUserPublic();			
+		break;
+
+		/*case $ROUTE_METHOD_DEL:
+			methodDelUserPublic();
+		break;*/
+
+		case $ROUTE_METHOD_ALTER:
+			methodDelUserPublic();
+		break;
+
+		case $ROUTE_METHOD_CONNECT:
+			methodConnectUserPublic();
+		break;
+
+		case $ROUTE_METHOD_DISCONNECT:
+		 	methodDisconnectUserPublic();
+		break;
+
+		case $ROUTE_METHOD_ISCONNECTED:
+		 	methodIsConnectedUserPublic();
+		break;
+
+	}
+}
+
+/*
+*/
+function methodAddUserPublic () {
+	if (!isset($_POST['login']) || !isset($_POST['pwd1']) || !isset($_POST['pwd2']) || !isset($_POST['email'])
+		errorBadRequest("Missing User Field(s)");
+	
+	
+	switch(serv_creerCompte($_POST['login'],$_POST['pwd1'],$_POST['pwd2'], $_POST['email'])) {
+		case $SER_ERR_LOGIN : case $SER_ERR_PASS :  
+			errorForbidden();
+		break;
+		case  $SER_ERR_MAIL :
+			errorNotAcceptable("Wrong Email");
+		break;
+
+		case $SER_ERR_DB:
+			errorInternal();
+		break;
+		
+	}
+}
+
+/*function methodDelUserPublic(){
+	if (!isset($_POST['id']))
+		errorBadRequest("Missing ID Field");
+
+		$return = //delUtilisateur
+	
+	switch(//delUtilisateur) {
+		case :
+		//
+	}
+}*/
+
+function methodAlterUserPublic(){
+	if (!isset($_POST['id'] || !isset($_POST['pwd1']) || !isset($_POST['pwd2']) || !isset($_POST['email'])
+		errorBadRequest("Missing Field(s)");
+	$return = //alterUser
+	
+	switch($return) {
+		case :
+		//
+	}
+
+}
+
+function methodConnectUserPublic() {
+	if (!isset($_POST['login']) || !isset($_POST['pwd']))
+		errorBadRequest("Missing Field(s)");
+
+	switch(serv_connecterComptePublic($_POST['login'], $_POST['pwd'])) {
+		
+		case $SER_ERR_LOGIN :
+			errorForbidden();
+		break;
+
+		case $SER_ERR_PASS :
+			errorForbidden();
+		break;
+	}
+}
+ function methodIsConnectedUserPublic() {
+ 	return json_encode ((estConnecte()) ? 1 : 0);
+ }
+
+ function methodDisconnectUserPublic(){
+ 	seDeconnecter();
+ }
+
+/**
+
+GESTION USER ONG
+
+*/
+
+function handlerUserONG(){
+	switch ($_GET['method']) {
+/*		case $ROUTE_METHOD_ADD:
+			methodAddUserONG();			
+		break;
+
+		case $ROUTE_METHOD_DEL:
+			methodDelUserONG();
+		break;
+
+		case $ROUTE_METHOD_ALTER:
+			methodalterUserONG();
+		break;
+*/
+
+		case $ROUTE_METHOD_CONNECT:
+			methodConnectUserONG();
+		break;
+
+		case $ROUTE_METHOD_ISCONNECTED:
+			methodIsConnectedUserONG();
+		break;
+
+		case $ROUTE_METHOD_DISCONNECT:
+			methodIsConnectedUserONG();
+		break;
+
+	}	
+}
+
+function methodConnectUserONG(){
+	if (!isset($_POST['login']) || !isset($_POST['pwd']))
+		errorBadRequest("Missing Field(s)");
+
+	switch(serv_connecterComptePublic($_POST['login'], $_POST['pwd'])) {
+		
+		case $SER_ERR_LOGIN :
+			errorForbidden();
+		break;
+
+		case $SER_ERR_PASS :
+			errorForbidden();
+		break;
+	}	
+
+}
+
+ function methodIsConnectedUserONG() {
+ 	return json_encode ((estConnecte()) ? 1 : 0);
+ }
+
+ function methodDisconnectUserONG(){
+ 	seDeconnecter();
+ }
+
+/**
+
+GESTION PROFIL
+
+**/
+function handlerProfile() {
+	switch ($_GET['method']) {
+		case $ROUTE_METHOD_ADD:
+			methodAddProfile();			
+		break;
+		case $ROUTE_METHOD_ALTER:
+			methodAlterProfile();
+		break;
+}
+
+function methodAddProfile() {
+	if (!isset($_POST['name']) || !isset($_POST['forename']) || !isset($_POST['desc']) || !isset($_POST['loc']) || !isset($_POST['phone']))
+		errorBadRequest("Missing User Field(s)");
+
+	switch (serv_creerProfile($_POST['name'], $_POST['forename'], $_POST['desc'], $_POST['loc'], $_POST['phone'])) {
+		case $SER_ERR_NOM : case $SER_ERR_PRENOM : case $SER_ERR_DESC : case $SER_ERR_LOCALISATION : case $SER_ERR_PHONE :
+			errorNotAcceptable("Wrong Field");
+		break;
+
+		case $SER_ERR_DB : 
+			errorInternal();
+		break;
+	}
+}
+
+function methodAlterProfile(){
+	if (!isset($_POST['name']) || !isset($_POST['forename']) || !isset($_POST['desc']) || !isset($_POST['loc']) || !isset($_POST['phone']))
+		errorBadRequest("Missing User Field(s)");
+	/*TODO SWITCH*/
+}
+
+
+function handlerSearch(){
+
+}
+
+
 ?>
