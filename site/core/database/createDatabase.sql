@@ -15,7 +15,7 @@ USE `Nuitdelinfo2014` ;
 -- Table `Nuitdelinfo2014`.`Refuge`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Nuitdelinfo2014`.`Refuge` (
-  `idRefuge` INT NOT NULL,
+  `idRefuge` INT NOT NULL AUTO_INCREMENT,
   `GPS` VARCHAR(45) NULL,
   PRIMARY KEY (`idRefuge`))
 ENGINE = InnoDB
@@ -36,7 +36,7 @@ ENGINE = InnoDB;
 -- Table `Nuitdelinfo2014`.`User`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Nuitdelinfo2014`.`User` (
-  `idUserPublic` INT NOT NULL,
+  `idUserPublic` INT NOT NULL AUTO_INCREMENT,
   `login` VARCHAR(45) NULL,
   `pwd` VARCHAR(45) NULL,
   `email` VARCHAR(45) NULL,
@@ -63,7 +63,7 @@ COMMENT = 'Tout utilisateur peut s\'enregistrer pour rechercher des membres.';
 -- Table `Nuitdelinfo2014`.`Recherche`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Nuitdelinfo2014`.`Recherche` (
-  `idRecherche` INT NOT NULL,
+  `idRecherche` INT NOT NULL AUTO_INCREMENT,
   `keywordDesc` VARCHAR(300) NULL,
   `keywordLoc` VARCHAR(300) NULL,
   `User_idUserPublic` INT NOT NULL,
@@ -82,7 +82,7 @@ COMMENT = 'Contient les informations liées à une recherche par un chercheur.';
 -- Table `Nuitdelinfo2014`.`Profil`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Nuitdelinfo2014`.`Profil` (
-  `idProfil` INT NOT NULL,
+  `idProfil` INT NOT NULL AUTO_INCREMENT,
   `nom` VARCHAR(45) NULL,
   `prenom` VARCHAR(45) NULL,
   `descPhysique` VARCHAR(300) NULL,
