@@ -11,6 +11,27 @@
   text-align: center;
 }
 
+.logoImg {
+  width: 100%;
+  height: 100%;
+}
 
-.footer {
+.middle {
+  margin-top: 70px;
+}
+
+.btn-login {
+  background-color: #fff;
+  border: 1px solid black;
+}
+
+.h1 {
+  font-family: helvetica;
+  font-weight: 600;
+  font-size: 25pt;
+}
+
+.btn-main {
+  height: 300px;
+  width: 300px;
 }
