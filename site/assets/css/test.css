@@ -45,5 +45,9 @@
 
 .footer {
   margin-top: 50px;
-  height: 70px;
+  height: 150px;
+}
+
+.footer-content {
+  height: 100%;
 }
