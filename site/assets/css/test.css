@@ -1,9 +1,9 @@
-[class*="col-"] {
+/*[class*="col-"] {
   border: 2px solid black;
   border-radius: 6px;
   line-height: 40px;
   text-align: center;
-}
+}*/
 
 .container{
   width: 80%;
@@ -40,6 +40,11 @@
   height: 300px;
   width: 300px;
   background-color: #01DF01;
+}
+
+.btn-main:hover {
+  font-size: 55pt;
+  line-height: 10pt;
 }
 
 .glyphicon-search, .glyphicon-user {

@@ -13,6 +13,13 @@ $DB_CRD_PASSWORD = "azertea!2014";
 
 
 /*
+	Type d'utilisateur de base
+*/
+$TYPE_USER_PUBLIC = 0;
+$TYPE_USER_ONG = 1;
+
+
+/*
 	Codes d'erreur
 */
 
