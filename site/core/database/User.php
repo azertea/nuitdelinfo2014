@@ -58,10 +58,6 @@
 	/* ******************************************************
 	 * 	Setters
 	 * ******************************************************/
-	public function setLogin($login) {
-		$this->login = $login;
-	}
-
 	public function setPwd($pwd) {
 		$this->pwd = $pwd;
 	}
