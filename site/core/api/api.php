@@ -1,7 +1,10 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors','On');
 /*Fichier aiguillage API */
-include_once ("../includes/config.php");
-include_once ("api_functions.php");
+require_once ("../includes/config.php");
+require_once ("./api_functions.php");
+require_once ("../includes/service.php");
 
 /**
 
@@ -63,7 +66,7 @@ function handlerUserPublic(){
 /*
 */
 function methodAddUserPublic () {
-	if (!isset($_POST['login']) || !isset($_POST['pwd1']) || !isset($_POST['pwd2']) || !isset($_POST['email'])
+	if (!isset($_POST['login']) || !isset($_POST['pwd1']) || !isset($_POST['pwd2']) || !isset($_POST['email']))
 		errorBadRequest("Missing User Field(s)");
 	
 	
@@ -94,17 +97,17 @@ function methodAddUserPublic () {
 	}
 }*/
 
-function methodAlterUserPublic(){
-	if (!isset($_POST['id'] || !isset($_POST['pwd1']) || !isset($_POST['pwd2']) || !isset($_POST['email'])
+/*function methodAlterUserPublic(){
+	if (!isset($_POST['id']) || !isset($_POST['pwd1']) || !isset($_POST['pwd2']) || !isset($_POST['email']))
 		errorBadRequest("Missing Field(s)");
-	$return = //alterUser
+	/*$return = //alterUser;
 	
 	switch($return) {
 		case :
 		//
 	}
 
-}
+}*/
 
 function methodConnectUserPublic() {
 	if (!isset($_POST['login']) || !isset($_POST['pwd']))
@@ -203,6 +206,8 @@ function handlerProfile() {
 		case $ROUTE_METHOD_ALTER:
 			methodAlterProfile();
 		break;
+	}	
+
 }
 
 function methodAddProfile() {
