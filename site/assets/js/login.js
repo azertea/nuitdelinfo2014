@@ -27,13 +27,14 @@ $(document).ready(function() {
     var formData = $('#form-login').serialize();
 
     $.ajax({
-      url: '/nuitdelinfo20141/site/core/api/api.php?type=1&method=20',
+      url: '/core/api/api.php?type=' + type + '&method=20',
       type: 'POST',
       data: formData
     })
     .success(function() {
       
       console.log("success");
+      window.location.reload();
 
     })
     .fail(function() {

@@ -70,8 +70,8 @@
         </div>
         <div class="row middle">
             <div class="col-lg-5">
-                <a href="./assets/html/lookingfor.php">
-                    <button type="button" href="./assets/html/createaccount.php?nextStep=search" id="buttonLookFor" class="btn btn-main">
+                <a href="./assets/html/createaccount.php?nextStep=search" id="buttonLookFor">
+                    <button type="button"  class="btn btn-main">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                         </br>
                         </br>
