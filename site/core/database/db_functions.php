@@ -27,7 +27,7 @@ $bdd;
 */
 function db_open() {
     try {
-        $bdd = new PDO('mysql:host=' . DB_SRV_HOSTNAME . ';dbname=' . DB_CRD_DATABASE_NAME . ';port=' . DB_SRV_PORT, DB_CRD_USERNAME, DB_CRD_PASSWORD);
+        $bdd = new PDO('mysql:host=' . DB_SRV_HOSTNAME . ';dbname=' . DB_CRD_DATABASE_NAME . ';port=' . DB_SRV_PORT, DB_CRD_USER, DB_CRD_PASSWORD);
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (Exception $e) {
       throw new Exception('Impossible d\'ouvrir la base de données : ' . $e->getMessage());
