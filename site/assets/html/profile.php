@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/test.css">
-    <link rel="stylesheet" href="../css/lookingfor.css">
 
     <!-- <link rel="stylesheet" type="text/css" href=""> -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -34,12 +33,7 @@
             </div>
 
         </div>
-</br>
-
-<div class="row lookingfor">
-Profile
-</div>
-</br>
+</br></br>
         <div class="row">
             <div class="col-lg-1"></div>
             <div class="col-lg-3">
@@ -50,7 +44,7 @@ Profile
                 données récupérées via la base en PHP
             </div>
             <div class="col-lg-2">
-                <button type="submit" class="btn btn-submit">Editer mon profil</button>
+                <button class="">
             </div>  
 <div class="col-lg-2">
 </div>    
