@@ -88,7 +88,7 @@ function db_getProfileFromUser($user)
 {
     $db_prepared_get_profile = $bdd->prepare('SELECT idProfil, nom, prenom, descPhysique, localisation, telephone, Refuge_idRefugen, User_idUser AS nb FROM PROFIL WHERE User_idUser = ?');
     $db_prepared_get_profile->execute(array($user->getIdUser()));
-    $arr = new array();
+    $arr = array();
     while($row = $db_prepared_get_profile->fetch())
     {
        $arr[] = 
