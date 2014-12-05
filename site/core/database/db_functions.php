@@ -198,12 +198,7 @@ function db_getUserFromProfile($bdd, $profil)
     Cette fonction ferme la base de données.
 */
 function db_close($bdd) {
-    try {
-        return $bdd->closeCursor();
-    
-    } catch (Exception $e) {
-        throw new Exception('Impossible de fermer la base de données : ' . $e->getMessage());
-    }
+    $bdd = null;
 }
 
 
