@@ -10,6 +10,36 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `Nuitdelinfo2014`.`Refuge`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `Nuitdelinfo2014`;
+INSERT INTO `Nuitdelinfo2014`.`Refuge` (`idRefuge`, `GPS`) VALUES (1,'N48 51.39827 E2 21.13445');
+INSERT INTO `Nuitdelinfo2014`.`Refuge` (`idRefuge`, `GPS`) VALUES (2,'N50 51.02621 E4 21.10164');
+INSERT INTO `Nuitdelinfo2014`.`Refuge` (`idRefuge`, `GPS`) VALUES (3,'N35 41.39639 E139 41.50199');
+INSERT INTO `Nuitdelinfo2014`.`Refuge` (`idRefuge`, `GPS`) VALUES (4,'S8 24.56255 E115 11.33387');
+INSERT INTO `Nuitdelinfo2014`.`Refuge` (`idRefuge`, `GPS`) VALUES (5,'S2 52.30332 E23 31.96289');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `Nuitdelinfo2014`.`User`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `Nuitdelinfo2014`;
+INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (1,'Haddock','haddock','c.haddock@br.br',NULL,2);
+INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (2,'Hiromu','hiromu','h@japan.jp',NULL,2);
+INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (3,'Naruto','naruto','naruto@japan.jp',NULL,2);
+INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (4,'ONGParis','paris','p@p.paris',1,1);
+INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (5,'ONGBruxelles','bruxelles','b@b.bruxelles',2,1);
+INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (6,'ONGTokyo','tokyo','t@t.tokyo',3,1);
+INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (7,'ONGKonoha','konoha','k@k.konoha',4,1);
+INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (8,'ONGBali','bali','bali@balo.lol',5,1);
+
+COMMIT;
+
+-- -----------------------------------------------------
 -- Data for table `Nuitdelinfo2014`.`Profil`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -31,38 +61,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `Nuitdelinfo2014`;
-INSERT INTO `Nuitdelinfo2014`.`Recherche` (`idRecherche`, `keywordDesc`, `keywordLoc`, 'nom', 'prenom', `User_idUser`) VALUES (1,'roux','paris tokyo bruxelles', NULL, NULL,1);
-INSERT INTO `Nuitdelinfo2014`.`Recherche` (`idRecherche`, `keywordDesc`, `keywordLoc`, 'nom', 'prenom', `User_idUser`) VALUES (2,'megafort',NULL, NULL, NULL,2);
-INSERT INTO `Nuitdelinfo2014`.`Recherche` (`idRecherche`, `keywordDesc`, `keywordLoc`, 'nom', 'prenom', `User_idUser`) VALUES (3,NULL,NULL, 'Masashi', 'Kishimoto',3);
-INSERT INTO `Nuitdelinfo2014`.`Recherche` (`idRecherche`, `keywordDesc`, `keywordLoc`, 'nom', 'prenom', `User_idUser`) VALUES (4,'blond',NULL, NULL, NULL,8);
-
-COMMIT;
-
--- -----------------------------------------------------
--- Data for table `Nuitdelinfo2014`.`Refuge`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `Nuitdelinfo2014`;
-INSERT INTO `Nuitdelinfo2014`.`Refuge` (`idRefuge`, `GPS`) VALUES (1,'N48 51.39827 E2 21.13445');
-INSERT INTO `Nuitdelinfo2014`.`Refuge` (`idRefuge`, `GPS`) VALUES (2,'N50 51.02621 E4 21.10164');
-INSERT INTO `Nuitdelinfo2014`.`Refuge` (`idRefuge`, `GPS`) VALUES (3,'N35 41.39639 E139 41.50199');
-INSERT INTO `Nuitdelinfo2014`.`Refuge` (`idRefuge`, `GPS`) VALUES (4,'S8 24.56255 E115 11.33387');
-INSERT INTO `Nuitdelinfo2014`.`Refuge` (`idRefuge`, `GPS`) VALUES (5,'S2 52.30332 E23 31.96289');
-
-COMMIT;
-
--- -----------------------------------------------------
--- Data for table `Nuitdelinfo2014`.`User`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `Nuitdelinfo2014`;
-INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (1,'Haddock','haddock','c.haddock@br.br',NULL,2);
-INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (2,'Hiromu','hiromu','h@japan.jp',NULL,2);
-INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (3,'Naruto','naruto','naruto@japan.jp',NULL,2);
-INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (4,'ONGParis','paris','p@p.paris',1,1);
-INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (5,'ONGBruxelles','bruxelles','b@b.bruxelles',2,1);
-INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (6,'ONGTokyo','tokyo','t@t.tokyo',3,1);
-INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (7,'ONGKonoha','konoha','k@k.konoha',4,1);
-INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (8,'ONGBali','bali','bali@balo.lol',5,1);
+INSERT INTO `Nuitdelinfo2014`.`Recherche` (`idRecherche`, `keywordDesc`, `keywordLoc`, `nom`, `prenom`, `User_idUser`) VALUES (1,'roux','paris tokyo bruxelles', NULL, NULL,1);
+INSERT INTO `Nuitdelinfo2014`.`Recherche` (`idRecherche`, `keywordDesc`, `keywordLoc`, `nom`, `prenom`, `User_idUser`) VALUES (2,'megafort',NULL, NULL, NULL,2);
+INSERT INTO `Nuitdelinfo2014`.`Recherche` (`idRecherche`, `keywordDesc`, `keywordLoc`, `nom`, `prenom`, `User_idUser`) VALUES (3,NULL,NULL, 'Masashi', 'Kishimoto',3);
+INSERT INTO `Nuitdelinfo2014`.`Recherche` (`idRecherche`, `keywordDesc`, `keywordLoc`, `nom`, `prenom`, `User_idUser`) VALUES (4,'blond',NULL, NULL, NULL,8);
 
 COMMIT;
