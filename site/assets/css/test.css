@@ -79,6 +79,13 @@ color: #FFFFFF;
 
 .footer-content{
   text-align: center;
+  color: #32B76A;
+  font-size: 25pt;
+}
+.footer-content:hover{
+  text-align: center;
+  color: #cccccc;
+  font-size: 25pt;
 }
 
 

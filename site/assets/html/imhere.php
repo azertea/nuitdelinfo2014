@@ -89,13 +89,13 @@
             </div>
         </div>
 
-        <div class="footer">
-            <div class="row">
-                <div class="col-lg-12">
-                    CECI EST UN FOOTER
+        <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <div class="footer">
+                <div class="col-lg-12 footer-content">
+                    <a class="footer-content" href="assets/html/Eggs/Cat_game.html"><span class="glyphicon glyphicon-gift" aria-hidden="true"></span></a>
                 </div>
-            </div>
-        </div>
+  </div>
+</nav>
     </div>
 </body>
 
