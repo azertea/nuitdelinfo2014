@@ -74,7 +74,7 @@ function methodAddUserPublic () {
 	
 	
 	switch(serv_creerCompte($_POST['login'],$_POST['pwd1'],$_POST['pwd2'], $_POST['email'])) {
-		case SER_ERR_LOGIN : case $SER_ERR_PASS :  
+		case SER_ERR_LOGIN : case SER_ERR_PASS :  
 			errorForbidden();
 		break;
 		case  SER_ERR_MAIL :
@@ -218,7 +218,7 @@ function methodAddProfile() {
 		errorBadRequest("Missing User Field(s)");
 
 	switch (serv_creerProfile($_POST['name'], $_POST['forename'], $_POST['desc'], $_POST['loc'], $_POST['phone'])) {
-		case SER_ERR_NOM : case $SER_ERR_PRENOM : case $SER_ERR_DESC : case $SER_ERR_LOCALISATION : case $SER_ERR_PHONE :
+		case SER_ERR_NOM : case SER_ERR_PRENOM : case SER_ERR_DESC : case SER_ERR_LOCALISATION : case SER_ERR_PHONE :
 			errorNotAcceptable("Wrong Field");
 		break;
 
