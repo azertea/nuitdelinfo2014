@@ -47,7 +47,7 @@ function serv_creerCompte($login, $pass1, $pass2, $mail)
 
 	$_SESSION['user'] = $user;
 
-	return true;
+	return SER_VALID;
 }
 
 // Retourne
@@ -91,7 +91,7 @@ function serv_creerProfil($nom, $prenom, $desc, $localisation, $telephone)
 		return SER_ERR_DB;
 	}
 
-	return true;
+	return SER_VALID;
 }
 
 // Retourne
@@ -137,7 +137,7 @@ function serv_connecterComptePublic($login, $pass)
 
 	$_SESSION['user'] = $user;
 
-	return true;
+	return SER_VALID;
 }
 
 // Retourne
@@ -183,7 +183,7 @@ function serv_connecterCompteONG($login, $pass)
 
 	$_SESSION['user'] = $user;
 
-	return true;
+	return SER_VALID;
 }
 
 // Retourne
@@ -207,7 +207,7 @@ function peutAjouterProfil()
 	$nbProfile = 0;
 
 	if ($user->getIdType() == TYPE_USER_ONG) {
-		return true;
+		return SER_VALID;
 	}
 
 	try {
