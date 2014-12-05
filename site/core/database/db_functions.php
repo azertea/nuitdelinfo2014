@@ -168,7 +168,7 @@ function db_getSearchProfile($bdd, $nom, $prenom, $localisation, $telephone)
     $request = $request . '1 = 1 LIMIT 10';
 
     //Execution de la requête concatenée avec les arguments
-    $db_prepared_get_search_profile = $bdd->prepare(request);
+    $db_prepared_get_search_profile = $bdd->prepare($request);
     $db_prepared_get_profile->execute($arr_args);
    
     $arr_ret = array();
