@@ -86,7 +86,7 @@ function db_nbProfileFromUser($user)
 
 function db_getProfileFromUser($user)
 {
-    $db_prepared_get_profile = $bdd->prepare('SELECT idProfil, nom, prenom, descPhysique, localisation, telephone, Refuge_idRefugen, User_idUser AS nb FROM PROFIL WHERE User_idUser = ?');
+    $db_prepared_get_profile = $bdd->prepare('SELECT idProfil, nom, prenom, descPhysique, localisation, telephone, Refuge_idRefugen, User_idUser FROM PROFIL WHERE User_idUser = ?');
     $db_prepared_get_profile->execute(array($user->getIdUser()));
     $arr = array();
     while($row = $db_prepared_get_profile->fetch())
@@ -94,10 +94,47 @@ function db_getProfileFromUser($user)
        $arr[] = 
             new Profil($row['idProfil'], $row['nom'], $row['prenom'],  $row['descPhysique'], $row['localisation'], $row['telephone'], $row['Refuge_idRefugen'], $row['User_idUser']);
     }   
-
+    return $arr;
 }
 
+function db_getSearchProfile($nom, $prenom, $localisation, $telephone)
+{
+    $request = 'SELECT idProfil, nom, prenom, descPhysique, localisation, telephone, Refuge_idRefugen, User_idUser FROM PROFIL WHERE';
+    $arr_args;
+    if(!is_null($nom))
+    {
+        $request = $request . 'nom LIKE ? AND';
+        $arr_args[] = '%' . $nom . '%';
+    }
+    if(!is_null($prenom))
+    {
+        $request = $request . 'prenom LIKE ? AND';
+        $arr_args[] = '%' . $prenom . '%';
+    }
+    if(!is_null($localisation))
+    {
+        $request = $request . 'localisation LIKE ? AND';
+        $arr_args[] = '%' . $localisation . '%';
+    }
+    if(!is_null($telephone))
+    {
+        $request = $request . 'telephone LIKE ? AND';
+        $arr_args[] = '%' . $telephone . '%';
+    }
+    $request = $request . '1 = 1 LIMIT 10';
 
+    $db_prepared_get_search_profile = $bdd->prepare(request);
+    $db_prepared_get_profile->execute($arr_args);
+    $arr_ret = array();
+
+    while($row = $db_prepared_get_profile->fetch())
+    {
+       $arr_ret[] = 
+            new Profil($row['idProfil'], $row['nom'], $row['prenom'],  $row['descPhysique'], $row['localisation'], $row['telephone'], $row['Refuge_idRefugen'], $row['User_idUser']);
+    }   
+
+    return $arr_ret;
+}
 
 function db_getUserFromProfile($profil)
 {
