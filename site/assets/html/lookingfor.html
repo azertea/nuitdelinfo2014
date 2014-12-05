@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/test.css">
+    <link rel="stylesheet" href="../css/lookingfor.css">
 
     <!-- <link rel="stylesheet" type="text/css" href=""> -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -40,8 +41,9 @@
 
         <div class="row middle">
             <div class="col-lg-5 ">
-                <div class="form-group">
-                    <span class="subtitle">I am looking for : </span>
+                <div class="form-group form-looking">
+
+                    <div type="button" class="lookingfor">I'm looking for</div>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Name">
                     </div>
@@ -55,21 +57,24 @@
                         <input type="text" class="form-control" placeholder="Phone number">
                     </div>
                 </div>
+                <button type="button" class="btn btn-login">Submit</button>
+
             </div>
             <div class="col-lg-2">
             </div>
             <div class="col-lg-5">
-                And he should be there :
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Location">
+                <div class="form-group">
+                    And he should be there :
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Location">
+                    </div>
                 </div>
-
                 MAP
             </div>
         </div>
 
         <div class="row">
-            <div class="imput-group">
+            <div class="form-group">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-7">
                     <textarea name="Message" class="form-control" placeholder="Let a message for the person you are searching for"></textarea>
