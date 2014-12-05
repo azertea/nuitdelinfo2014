@@ -55,8 +55,8 @@ function db_getUserFromLogin($login)
     $db_prepared_get_user_from_id = $bdd->prepare('SELECT id, login, pwd, email, Refuge_idRefuge, Type_idType FROM USER WHERE login = ?');  
     $db_prepared_get_user_from_id->execute(array($login));
     $row = $db_prepared_get_user_from_id->fetch(); 
-    $user = new Utilisateur($row['id'], $row['login'], $row['pwd'], $row['email'], $row['Refuge_idRefuge'], $row['Type_idType']);
-    return $user;
+    return new Utilisateur($row['id'], $row['login'], $row['pwd'], $row['email'], $row['Refuge_idRefuge'], $row['Type_idType']);
+
 }
 
 function db_createProfile($user, $nom, $prenom, $description, $localisation, $telephone)
@@ -95,6 +95,16 @@ function db_getProfileFromUser($user)
             new Profil($row['idProfil'], $row['nom'], $row['prenom'],  $row['descPhysique'], $row['localisation'], $row['telephone'], $row['Refuge_idRefugen'], $row['User_idUser']);
     }   
 
+}
+
+
+
+function db_getUserFromProfile($profil)
+{
+    $db_prepared_get_user = $bdd->prepare('SELECT id, login, pwd, email, Refuge_idRefuge, Type_idType  FROM USER WHERE idUser = ?');
+    $db_prepared_get_user->execute(array($profil->getIdUser()));
+    $row = $db_prepared_get_profile_count>fetch(); 
+    return new Utilisateur($row['id'], $row['login'], $row['pwd'], $row['email'], $row['Refuge_idRefuge'], $row['Type_idType']);   
 }
 /*
     Cette fonction ferme la base de données (passée en paramètre).
