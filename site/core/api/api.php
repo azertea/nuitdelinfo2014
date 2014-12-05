@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors','On');
 /*Fichier aiguillage API */
-require_once ("../includes/config.php");
+include ("../includes/config.php");
 require_once ("./api_functions.php");
 require_once ("../includes/service.php");
 
@@ -11,20 +11,22 @@ require_once ("../includes/service.php");
 ROUTAGE 
 
 **/
-if(!isset($_GET['method']) || !isset($_GET['type']))
+	print_r($_POST);
+if( !isset($_GET['type']))
 	  errorBadRequest("Missing Field(s)");
 
 switch ($_GET['type']) {
-	case $ROUTE_USER_PUBLIC :
+	case ROUTE_USER_PUBLIC :
 		handlerUserPublic();
 		break;
-	case $ROUTE_USER_ONG :
+	case ROUTE_USER_ONG :
 		handlerUserONG();
 		break;
-	case $ROUTE_SEARCH:
+	case ROUTE_SEARCH:
+		print_r("ROUTE SEARCH");
 		handlerSearch();
 		break;
-	case $ROUTE_PROFIL:
+	case ROUTE_PROFIL:
 		handlerProfile();
 		break;
 
@@ -37,8 +39,9 @@ GESTION USER PUBLIC
 */
 
 function handlerUserPublic(){
+	
 	switch ($_GET['method']) {
-		case $ROUTE_METHOD_ADD:
+		case ROUTE_METHOD_ADD :
 			methodAddUserPublic();			
 		break;
 
@@ -46,19 +49,19 @@ function handlerUserPublic(){
 			methodDelUserPublic();
 		break;*/
 
-		case $ROUTE_METHOD_ALTER:
+		case ROUTE_METHOD_ALTER:
 			methodDelUserPublic();
 		break;
 
-		case $ROUTE_METHOD_CONNECT:
+		case ROUTE_METHOD_CONNECT:
 			methodConnectUserPublic();
 		break;
 
-		case $ROUTE_METHOD_DISCONNECT:
+		case ROUTE_METHOD_DISCONNECT:
 		 	methodDisconnectUserPublic();
 		break;
 
-		case $ROUTE_METHOD_ISCONNECTED:
+		case ROUTE_METHOD_ISCONNECTED:
 		 	methodIsConnectedUserPublic();
 		break;
 
@@ -73,14 +76,14 @@ function methodAddUserPublic () {
 	
 	
 	switch(serv_creerCompte($_POST['login'],$_POST['pwd1'],$_POST['pwd2'], $_POST['email'])) {
-		case $SER_ERR_LOGIN : case $SER_ERR_PASS :  
+		case SER_ERR_LOGIN : case $SER_ERR_PASS :  
 			errorForbidden();
 		break;
-		case  $SER_ERR_MAIL :
+		case  SER_ERR_MAIL :
 			errorNotAcceptable("Wrong Email");
 		break;
 
-		case $SER_ERR_DB:
+		case SER_ERR_DB:
 			errorInternal();
 		break;
 		
@@ -117,17 +120,17 @@ function methodConnectUserPublic() {
 
 	switch(serv_connecterComptePublic($_POST['login'], $_POST['pwd'])) {
 		
-		case $SER_ERR_LOGIN :
+		case SER_ERR_LOGIN :
 			errorForbidden();
 		break;
 
-		case $SER_ERR_PASS :
+		case SER_ERR_PASS :
 			errorForbidden();
 		break;
 	}
 }
  function methodIsConnectedUserPublic() {
- 	return json_encode ((estConnecte()) ? 1 : 0);
+ 	echo(json_encode ((estConnecte()) ? 1 : 0));
  }
 
  function methodDisconnectUserPublic(){
@@ -155,15 +158,15 @@ function handlerUserONG(){
 		break;
 */
 
-		case $ROUTE_METHOD_CONNECT:
+		case ROUTE_METHOD_CONNECT:
 			methodConnectUserONG();
 		break;
 
-		case $ROUTE_METHOD_ISCONNECTED:
+		case ROUTE_METHOD_ISCONNECTED:
 			methodIsConnectedUserONG();
 		break;
 
-		case $ROUTE_METHOD_DISCONNECT:
+		case ROUTE_METHOD_DISCONNECT:
 			methodIsConnectedUserONG();
 		break;
 
@@ -174,13 +177,13 @@ function methodConnectUserONG(){
 	if (!isset($_POST['login']) || !isset($_POST['pwd']))
 		errorBadRequest("Missing Field(s)");
 
-	switch(serv_connecterComptePublic($_POST['login'], $_POST['pwd'])) {
+	switch(serv_connecterCompteONG($_POST['login'], $_POST['pwd'])) {
 		
-		case $SER_ERR_LOGIN :
+		case SER_ERR_LOGIN :
 			errorForbidden();
 		break;
 
-		case $SER_ERR_PASS :
+		case SER_ERR_PASS :
 			errorForbidden();
 		break;
 	}	
@@ -188,7 +191,7 @@ function methodConnectUserONG(){
 }
 
  function methodIsConnectedUserONG() {
- 	return json_encode ((estConnecte()) ? 1 : 0);
+ 	echo (json_encode ((estConnecte()) ? 1 : 0));
  }
 
  function methodDisconnectUserONG(){
@@ -202,10 +205,10 @@ GESTION PROFIL
 **/
 function handlerProfile() {
 	switch ($_GET['method']) {
-		case $ROUTE_METHOD_ADD:
+		case ROUTE_METHOD_ADD:
 			methodAddProfile();			
 		break;
-		case $ROUTE_METHOD_ALTER:
+		case ROUTE_METHOD_ALTER:
 			methodAlterProfile();
 		break;
 	}	
@@ -217,11 +220,11 @@ function methodAddProfile() {
 		errorBadRequest("Missing User Field(s)");
 
 	switch (serv_creerProfile($_POST['name'], $_POST['forename'], $_POST['desc'], $_POST['loc'], $_POST['phone'])) {
-		case $SER_ERR_NOM : case $SER_ERR_PRENOM : case $SER_ERR_DESC : case $SER_ERR_LOCALISATION : case $SER_ERR_PHONE :
+		case SER_ERR_NOM : case $SER_ERR_PRENOM : case $SER_ERR_DESC : case $SER_ERR_LOCALISATION : case $SER_ERR_PHONE :
 			errorNotAcceptable("Wrong Field");
 		break;
 
-		case $SER_ERR_DB : 
+		case SER_ERR_DB : 
 			errorInternal();
 		break;
 	}
@@ -240,11 +243,13 @@ GESTION RECHERCHE
 
 **/
 function handlerSearch(){
+	print_r("HANDLER SEARCH");
 	switch ($_GET['user']) {
-		case $ROUTE_USER_ONG:
+		case ROUTE_USER_ONG:
+			print_r("USER_ONG_SEARCH");
 			userONGSearch();			
 		break;
-		case $ROUTE_USER_PUBLIC:
+		case ROUTE_USER_PUBLIC:
 			userPublicSearch();
 		break;
 	}	
@@ -253,13 +258,15 @@ function handlerSearch(){
 function userPublicSearch(){
 	if (!isset($_POST['name']) || !isset($_POST['forename']) || !isset($_POST['desc']) || !isset($_POST['loc']) || !isset($_POST['phone']))
 		errorBadRequest("Missing User Field(s)");
-	return json_encode(rechercheProfilPublic($_POST['name'],$_POST['forename'],$_POST['desc'],$_POST['loc'],$_POST['phone']);
+	echo (json_encode(rechercheProfilPublic($_POST['name'],$_POST['forename'],$_POST['desc'],$_POST['loc'],$_POST['phone'])));
 }
 
 function userONGSearch(){
+
+	print_r($_POST);
 	if (!isset($_POST['name']) || !isset($_POST['forename']) || !isset($_POST['desc']) || !isset($_POST['loc']) || !isset($_POST['phone']))
 		errorBadRequest("Missing User Field(s)");
-	return json_encode(rechercheProfilONG($_POST['name'],$_POST['forename'],$_POST['desc'],$_POST['loc'],$_POST['phone']);
+	echo( json_encode(rechercheProfilONG($_POST['name'],$_POST['forename'],$_POST['desc'],$_POST['loc'],$_POST['phone'])));
 }
 
 ?>

@@ -21,14 +21,14 @@ include_once('../database/User.php');
     Il faut l'initialiser en utilisant db_open et la fermer avec db_close,
     a chaque fois que l'on utilise une fonction d'accès
 */
-$bdd;
 /*
     Cette fonction ouvre la base de données, la bdd est stockée en local
 */
 function db_open() {
     try {
-        $bdd = new PDO('mysql:host=' . DB_SRV_HOSTNAME . ';dbname=' . DB_CRD_DATABASE_NAME . ';port=' . DB_SRV_PORT, DB_CRD_USERNAME, DB_CRD_PASSWORD);
+        $bdd = new PDO('mysql:host=' . DB_SRV_HOSTNAME . ';dbname=' . DB_CRD_DATABASE_NAME . ';port=' . DB_SRV_PORT, DB_CRD_USER, DB_CRD_PASSWORD);
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $bdd;
     } catch (Exception $e) {
       throw new Exception('Impossible d\'ouvrir la base de données : ' . $e->getMessage());
     }
@@ -37,7 +37,7 @@ function db_open() {
 /*
     Permet d'ajouter un compte a partir du login, mot de passe et e-mail dans la BDD
 */
-function db_createAccount($login, $pwd, $mail)
+function db_createAccount($bdd, $login, $pwd, $mail)
 {
     //Creation du preparedStatement
     $db_prepared_insert_compte = $bdd->prepare('INSERT INTO USER (login, pwd, email) VALUES (:login, :pwd, :email)');
@@ -64,7 +64,7 @@ function db_createAccount($login, $pwd, $mail)
 /*
     Permet de récuperer un utilisateur de la BDD en fonction de son login
 */
-function db_getUserFromLogin($login)
+function db_getUserFromLogin($bdd, $login)
 {
 
     $db_prepared_get_user_from_id = $bdd->prepare('SELECT id, login, pwd, email, Refuge_idRefuge, Type_idType FROM USER WHERE login = ?');  
@@ -80,7 +80,7 @@ function db_getUserFromLogin($login)
     Permet de créer un profil dans la BDD à partir d'un utilisateur (pour son id)
     d'un nom, d'un prenom, d'une description, d'une localisation et d'un numero de téléphone
 */
-function db_createProfile($user, $nom, $prenom, $description, $localisation, $telephone)
+function db_createProfile($bdd, $user, $nom, $prenom, $description, $localisation, $telephone)
 {
 
     $db_prepared_insert_profile = $bdd->prepare('INSERT INTO PROFIL (nom, prenom, descPhysique, localisation, telephone, User_idUser) VALUES (:nom, :prenom, :descPhysique, :localisation, :telephone, :User_idUser)');
@@ -99,7 +99,7 @@ function db_createProfile($user, $nom, $prenom, $description, $localisation, $te
 /*
     Compte le nombre de créés par l'utilisateur passé en paramètre
 */
-function db_nbProfileFromUser($user)
+function db_nbProfileFromUser($bdd, $user)
 {
     $db_prepared_get_profile_count = $bdd->prepare('SELECT COUNT(idProfil) AS nb FROM PROFIL WHERE User_idUser = ?');
     $db_prepared_get_profile_count->execute(array($user->getIdUser()));
@@ -111,7 +111,7 @@ function db_nbProfileFromUser($user)
 /*
     Donne la liste des profils créés par l'utilisateur passé en paramètre
 */
-function db_getProfileFromUser($user)
+function db_getProfileFromUser($bdd, $user)
 {
     $db_prepared_get_profile = $bdd->prepare('SELECT idProfil, nom, prenom, descPhysique, localisation, telephone, Refuge_idRefugen, User_idUser FROM PROFIL WHERE User_idUser = ?');
     $db_prepared_get_profile->execute(array($user->getIdUser()));
@@ -132,7 +132,7 @@ function db_getProfileFromUser($user)
     nom, prénom, à la localisation et au numéro de téléphone passé en paramètres.
     (Ils peuvent être nuls mais au moins un ne l'est pas)
 */
-function db_getSearchProfile($nom, $prenom, $localisation, $telephone)
+function db_getSearchProfile($bdd, $nom, $prenom, $localisation, $telephone)
 {
     //On initialise la string de la requête sans les conditions
     $request = 'SELECT idProfil, nom, prenom, descPhysique, localisation, telephone, Refuge_idRefugen, User_idUser FROM PROFIL WHERE';
@@ -168,12 +168,12 @@ function db_getSearchProfile($nom, $prenom, $localisation, $telephone)
     $request = $request . '1 = 1 LIMIT 10';
 
     //Execution de la requête concatenée avec les arguments
-    $db_prepared_get_search_profile = $bdd->prepare(request);
-    $db_prepared_get_profile->execute($arr_args);
+    $db_prepared_get_search_profile = $bdd->prepare($request);
+    $db_prepared_get_search_profile->execute($arr_args);
    
     $arr_ret = array();
 
-    while($row = $db_prepared_get_profile->fetch())
+    while($row = $db_prepared_get_search_profile->fetch())
     {
        $arr_ret[] = 
             new Profil($row['idProfil'], $row['nom'], $row['prenom'],  $row['descPhysique'], $row['localisation'], $row['telephone'], $row['Refuge_idRefugen'], $row['User_idUser']);
@@ -185,7 +185,7 @@ function db_getSearchProfile($nom, $prenom, $localisation, $telephone)
 /*
     Renvoi l'utilisateur qui a créé le profil passé en paramètre
 */
-function db_getUserFromProfile($profil)
+function db_getUserFromProfile($bdd, $profil)
 {
     $db_prepared_get_user = $bdd->prepare('SELECT id, login, pwd, email, Refuge_idRefuge, Type_idType  FROM USER WHERE idUser = ?');
     $db_prepared_get_user->execute(array($profil->getIdUser()));
@@ -197,7 +197,7 @@ function db_getUserFromProfile($profil)
 /*
     Cette fonction ferme la base de données.
 */
-function db_close() {
+function db_close($bdd) {
     try {
         return $bdd->closeCursor();
     

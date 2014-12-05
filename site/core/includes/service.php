@@ -37,9 +37,9 @@ function serv_creerCompte($login, $pass1, $pass2, $mail)
 	}
 
 	try {
-		db_open();
-		$user = db_createAccount($login,sha1($pass1),$mail);
-		db_close();
+		$bdd = db_open();
+		$user = db_createAccount($bdd,$login,sha1($pass1),$mail);
+		db_close($bdd);
 	} catch (Exception $e) {
 		return SER_ERR_DB;
 	}
@@ -82,9 +82,9 @@ function serv_creerProfil($nom, $prenom, $desc, $localisation, $telephone)
 	$user = $_SESSION['user'];
 
 	try {
-		db_open();
-		db_createProfile($user, $nom, $prenom, $desc, $localisation, $telephone);
-		db_close();
+		$bdd = db_open();
+		db_createProfile($bdd,$user, $nom, $prenom, $desc, $localisation, $telephone);
+		db_close($bdd);
 	} catch (Exception $e) {
 		return SER_ERR_DB;
 	}
@@ -113,9 +113,9 @@ function serv_connecterComptePublic($login, $pass)
 	}
 
 	try {
-		db_open();
-		$user = db_getUser($login);
-		db_close();
+		$bdd = db_open();
+		$user = db_getUserFromLogin($bdd,$login);
+		db_close($bdd);
 
 		if (is_null($user)) {
 			return SER_ERR_USER_NOT_FOUND;
@@ -158,9 +158,9 @@ function serv_connecterCompteONG($login, $pass)
 	}
 
 	try {
-		db_open();
-		$user = db_getUser($login);
-		db_close();
+		$bdd = db_open();
+		$user = db_getUser($bdd,$login);
+		db_close($bdd);
 
 		if (is_null($user)) {
 			return SER_ERR_USER_NOT_FOUND;
@@ -207,9 +207,9 @@ function peutAjouterProfil()
 	}
 
 	try {
-		db_open();
-		$nbProfile = db_nbProfileFromUser($user);
-		db_close();
+		$bdd = db_open();
+		$nbProfile = db_nbProfileFromUser($bdd,$user);
+		db_close($bdd);
 	} catch (Exception $e) {
 		return SER_ERR_DB;
 	}
@@ -225,9 +225,9 @@ function listeProfil()
 	$listProfile = array();
 
 	try {
-		db_open();
-		$listProfile = db_getProfileFromUser($user);
-		db_close();
+		$bdd = db_open();
+		$listProfile = db_getProfileFromUser($bdd,$user);
+		db_close($bdd);
 	} catch (Exception $e) {
 		return SER_ERR_DB;
 	}
@@ -249,16 +249,16 @@ function rechercheProfilPublic($nom, $prenom, $desc, $localisation, $telephone)
 	}
 
 	try {
-		db_open();
-		$listProfile = db_getSearchProfile($nom, $prenom, $desc, $localisation, $telephone);
+		$bdd = db_open();
+		$listProfile = db_getSearchProfile($bdd,$nom, $prenom, $desc, $localisation, $telephone);
 
 		// Contacter la liste des personnes
 		foreach ($listProfile as $key => $profil) {
-			$user = db_getUserFromProfile($profil);
+			$user = db_getUserFromProfile($bdd,$profil);
 			array_push($listMail, $user->getEmail());
 		}
 
-		db_close();
+		db_close($bdd);
 	} catch (Exception $e) {
 		return SER_ERR_DB;
 	}
@@ -284,16 +284,16 @@ function rechercheProfilONG($nom, $prenom, $desc, $localisation, $telephone)
 	}
 
 	try {
-		db_open();
-		$listProfile = db_getSearchProfile($nom, $prenom, $desc, $localisation, $telephone);
+		$bdd = db_open();
+		$listProfile = db_getSearchProfile($bdd,$nom, $prenom, $desc, $localisation, $telephone);
 
 		// Contacter la liste des personnes
 		foreach ($listProfile as $key => $profil) {
-			$user = db_getUserFromProfile($profil);
+			$user = db_getUserFromProfile($bdd,$profil);
 			array_push($listMail, $user->getEmail());
 		}
 
-		db_close();
+		db_close($bdd);
 	} catch (Exception $e) {
 		return SER_ERR_DB;
 	}

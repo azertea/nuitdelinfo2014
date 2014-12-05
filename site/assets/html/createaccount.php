@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/test.css">
     <link rel="stylesheet" href="../css/lookingfor.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="../js/map.js"></script>
-
 
 
     <!-- <link rel="stylesheet" type="text/css" href=""> -->
@@ -20,7 +17,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
   <![endif]-->
 
-    <title>I'm Here!</title>
+    <title>Create an account</title>
 </head>
 
 <body>
@@ -47,8 +44,21 @@
         <div class="row middle">
             <div class="col-lg-5 ">
                 <div class="form-group form-looking">
-
-                    <div type="button" class="lookingfor">I am</div>
+                    
+                        <div class="lookingfor">Account informations :</div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Login">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Confirm password">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Email@adress">
+                    </div>
+                    <div class="lookingfor">I am :</div>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Name">
                     </div>
@@ -66,7 +76,7 @@
 
                     <textarea name="Message" class="form-control" placeholder="Let a message for the person who are searching for you"></textarea>
                 </div>
-                <button type="button" class="btn btn-login">Submit</button>
+                <button type="button" class="btn btn-login">Get Hope</button>
 
 
             </div>
@@ -75,17 +85,13 @@
             <div class="col-lg-5">
                 <div class="form-group">
                     <div class="lookingfor">
-                        And I am :
+                        And I am there:
                     </div>
-                    <div class="form-group where">
-                        <input id="map-form" type="text" class="form-control" placeholder="Location">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Location">
                     </div>
                 </div>
-                <div class="map-container">
-                    <iframe class="map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA-ww8bbI0RaGe1Q927-pdxRDuZ-s6Wh3c&q=Eiffel">
-                    </iframe>
-                </div>
-
+                <div class="lookingfor">MAP</div>
             </div>
         </div>
 
