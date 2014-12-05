@@ -3,7 +3,7 @@
 	 * Classe correspondante à un camp de réfugiés/une agence de l'ONG/...
 	 * @author Yseult B., Malik I.
 	 */
-	class Recherche
+	class Refuge
 	{
 		/* ******************************************************
 		 * 	Attributs
