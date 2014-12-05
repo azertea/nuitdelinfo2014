@@ -67,12 +67,12 @@ function db_createAccount($bdd, $login, $pwd, $mail)
 function db_getUserFromLogin($bdd, $login)
 {
 
-    $db_prepared_get_user_from_id = $bdd->prepare('SELECT id, login, pwd, email, Refuge_idRefuge, Type_idType FROM USER WHERE login = ?');  
+    $db_prepared_get_user_from_id = $bdd->prepare('SELECT idUser, login, pwd, email, Refuge_idRefuge, Type_idType FROM USER WHERE login = ?');  
     $db_prepared_get_user_from_id->execute(array($login));
 
     //On fetch les données et on construit l'utilisateur en fonction des attributs
     $row = $db_prepared_get_user_from_id->fetch(); 
-    return new Utilisateur($row['id'], $row['login'], $row['pwd'], $row['email'], $row['Refuge_idRefuge'], $row['Type_idType']);
+    return new Utilisateur($row['idUser'], $row['login'], $row['pwd'], $row['email'], $row['Refuge_idRefuge'], $row['Type_idType']);
 
 }
 
@@ -113,7 +113,7 @@ function db_nbProfileFromUser($bdd, $user)
 */
 function db_getProfileFromUser($bdd, $user)
 {
-    $db_prepared_get_profile = $bdd->prepare('SELECT idProfil, nom, prenom, descPhysique, localisation, telephone, Refuge_idRefugen, User_idUser FROM PROFIL WHERE User_idUser = ?');
+    $db_prepared_get_profile = $bdd->prepare('SELECT idProfil, nom, prenom, descPhysique, localisation, telephone, Refuge_idRefuge, User_idUser FROM PROFIL WHERE User_idUser = ?');
     $db_prepared_get_profile->execute(array($user->getIdUser()));
 
     //On fetch en boucle en ajoutant les Profil récupérés de la BDD dans le tableau créé
@@ -121,7 +121,7 @@ function db_getProfileFromUser($bdd, $user)
     while($row = $db_prepared_get_profile->fetch())
     {
        $arr[] = 
-            new Profil($row['idProfil'], $row['nom'], $row['prenom'],  $row['descPhysique'], $row['localisation'], $row['telephone'], $row['Refuge_idRefugen'], $row['User_idUser']);
+            new Profil($row['idProfil'], $row['nom'], $row['prenom'],  $row['descPhysique'], $row['localisation'], $row['telephone'], $row['Refuge_idRefuge'], $row['User_idUser']);
     }   
     
     return $arr;
@@ -135,7 +135,7 @@ function db_getProfileFromUser($bdd, $user)
 function db_getSearchProfile($bdd, $nom, $prenom, $localisation, $telephone)
 {
     //On initialise la string de la requête sans les conditions
-    $request = 'SELECT idProfil, nom, prenom, descPhysique, localisation, telephone, Refuge_idRefugen, User_idUser FROM PROFIL WHERE';
+    $request = 'SELECT idProfil, nom, prenom, descPhysique, localisation, telephone, Refuge_idRefuge, User_idUser FROM PROFIL WHERE';
     $arr_args;
     
     //On vérifie pour chaque argument s'il existe
@@ -176,7 +176,7 @@ function db_getSearchProfile($bdd, $nom, $prenom, $localisation, $telephone)
     while($row = $db_prepared_get_search_profile->fetch())
     {
        $arr_ret[] = 
-            new Profil($row['idProfil'], $row['nom'], $row['prenom'],  $row['descPhysique'], $row['localisation'], $row['telephone'], $row['Refuge_idRefugen'], $row['User_idUser']);
+            new Profil($row['idProfil'], $row['nom'], $row['prenom'],  $row['descPhysique'], $row['localisation'], $row['telephone'], $row['Refuge_idRefuge'], $row['User_idUser']);
     }   
 
     return $arr_ret;
@@ -187,11 +187,11 @@ function db_getSearchProfile($bdd, $nom, $prenom, $localisation, $telephone)
 */
 function db_getUserFromProfile($bdd, $profil)
 {
-    $db_prepared_get_user = $bdd->prepare('SELECT id, login, pwd, email, Refuge_idRefuge, Type_idType  FROM USER WHERE idUser = ?');
+    $db_prepared_get_user = $bdd->prepare('SELECT idUser, login, pwd, email, Refuge_idRefuge, Type_idType  FROM USER WHERE idUser = ?');
     $db_prepared_get_user->execute(array($profil->getIdUser()));
 
     $row = $db_prepared_get_profile_count>fetch(); 
-    return new Utilisateur($row['id'], $row['login'], $row['pwd'], $row['email'], $row['Refuge_idRefuge'], $row['Type_idType']);   
+    return new Utilisateur($row['idUser'], $row['login'], $row['pwd'], $row['email'], $row['Refuge_idRefuge'], $row['Type_idType']);   
 }
 
 /*
