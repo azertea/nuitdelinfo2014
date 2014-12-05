@@ -30,7 +30,9 @@
             </div>
 
             <div class="col-lg-5 logoContainer">
-                <img class="logoImg" href="index.html" src="../img/logo.png" alt="">
+                <a href="../../index.php">
+                <img class="logoImg" href="" src="../img/logo.png" alt="">
+            </a>
             </div>
 
 
@@ -59,7 +61,6 @@
                     </div>
                     <textarea id= "form_message" name="Message" class="form-control" placeholder="Let a message for the person you are searching for"></textarea>
                 </div>
-
                 <button type="button" class="btn btn-login" id="form_submit">Submit</button>
 
             </div>
@@ -78,7 +79,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class="footer">
             <div class="row">

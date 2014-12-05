@@ -31,7 +31,7 @@
             <div class="col-lg-3">
 
             </div>
-            <a href="../../index.html">
+            <a href="../../index.php">
                 <div class="col-lg-5 logoContainer">
                     <img class="logoImg" href="index.html" src="../img/logo.png" alt="">
                 </div>
