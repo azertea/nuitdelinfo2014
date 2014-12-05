@@ -190,7 +190,7 @@ function db_getUserFromProfile($bdd, $profil)
     $db_prepared_get_user = $bdd->prepare('SELECT idUser, login, pwd, email, Refuge_idRefuge, Type_idType  FROM USER WHERE idUser = ?');
     $db_prepared_get_user->execute(array($profil->getIdUser()));
 
-    $row = $db_prepared_get_profile_count->fetch(); 
+    $row = $db_prepared_get_user->fetch(); 
     return new User($row['idUser'], $row['login'], $row['pwd'], $row['email'], $row['Refuge_idRefuge'], $row['Type_idType']);   
 }
 
