@@ -4,7 +4,7 @@
 	 * Classe correspondante à un utilisateur pouvant se connecter
 	 * @author Yseult B., Malik I.
 	 */
-	class Type
+	class User
 	{
 		/* ******************************************************
 		 * 	Attributs
