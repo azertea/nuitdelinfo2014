@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<link rel="icon" type="image/png" href="favicon.ico" />
+<title>Cat's power</title>
+<style>
+.snow, .snow2 {
+    top:0px;
+    left:0px;
+    position:absolute;
+    z-index:200;
+    -webkit-user-select: none; /* Safari, Chrome */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE */
+    user-select: none;
+}
+
+#cat1, #cat2 {
+	-webkit-user-drag: none;
+}
+
+
+body {background-color:grey;}
+
+#site {
+    width:1850px;
+    height:950px;
+    margin:0 auto;
+    position:relative;
+    overflow:hidden;
+}
+
+#score{
+	top:0px;
+    right:50px;
+    position:absolute;
+    font-weight: bold;
+    font-size: 45px;
+}
+
+#timer{
+	top:0px;
+    left:0px;
+    position:absolute;
+    font-weight: bold;
+    font-size: 45px;
+}
+
+#start{
+	top:30%;
+    right:48%;
+    position:absolute;
+    font-size:32px;
+    padding-left:25px;
+    padding-right:25px;
+}
+#presentation{
+	top:43%;
+    right:46%;
+    position:absolute;
+    font-size:32px;
+}
+#consignes{
+	position:absolute;
+	top:64%;
+	right:40%;
+	font-size:20px;
+}
+#bestscore{
+	position:absolute;
+	top:81%;
+	right:35%;
+	font-size:51px;
+}
+#son{
+	position : absolute;
+	top : 36%;
+	right:45%;
+	font-style:italic;
+}
+
+</style>
+
+
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="couleur.js"></script>
+
+<script>
+
+$(document).ready(function(){
+
+	function getCookie(cname) {
+	    var name = cname + "=";
+	    var ca = document.cookie.split(';');
+	    for(var i=0; i<ca.length; i++) {
+	        var c = ca[i];
+	        while (c.charAt(0)==' ') c = c.substring(1);
+	        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+	    }
+	    return "";
+	}
+
+
+	setInterval(function(){
+		$("#start").fadeOut(800).fadeIn(800);
+	},2000);
+	var sc = getCookie("score");
+		if(sc != ""){
+			$("#best").html(sc);
+		}else{
+			$("#best").html("00:00:00");
+		}
+});
+
+$(document).on("click","#start",function(){
+
+	$("#start").remove();
+	$("#presentation").remove();
+	$("#son").remove();
+	$("#consignes").remove();
+	$("#bestscore").remove();
+
+	var audio = new Audio('sax.mp3');
+	audio.loop = true;
+	audio.play();
+
+	var score = 0;
+	var heure = 0;
+	var minute = 0;
+	var seconde = 0;
+	setInterval(function(){
+		seconde += 1;
+		if(seconde == 60){
+			minute +=1;
+			seconde = 0;
+			if(minute == 60){
+				heure +=1;
+				minute = 0;
+			}
+		}
+	$("#timer").html(( (heure < 10) ? '0'+heure:heure )+":"+( (minute < 10) ? '0'+minute:minute )+":"+( (seconde < 10) ? '0'+seconde:seconde ));
+	},1000);
+
+	$(document).on("click",".snow", function(){
+		if(score+1 == 300){
+			victoire($("#timer").html());
+		}else{
+			var randomcouleur = Math.floor(Math.random() * 332) + 1;
+			score += 1;
+			$("#score").html('Score : '+ score);
+			$('body').css('background-color', couleur[randomcouleur]);
+			var audio = new Audio('chatons.wav');
+			audio.play();
+			$(this).stop();
+			$(this).html('<img src="explosion.gif" width="200"/>');
+			var object = this;
+			setTimeout(function() {
+					$(object).remove();
+			}, 300);
+		}
+	});
+
+	$(document).on('click',".snow2", function(){
+		if(score+10>=300){
+			victoire($("#timer").html());
+		}else{
+			var randomcouleur = Math.floor(Math.random() * 332) + 1;
+			score += 10;
+			$("#score").html('Score : '+ score);
+			$('body').css('background-color', couleur[randomcouleur]);
+			var audio = new Audio('chat_gros.wav');
+			audio.play();
+			$(this).stop();
+			$(this).html('<img src="explosion.gif" width="200"/>');
+			var object = this;
+			setTimeout(function() {
+	 			$(object).remove();
+			}, 200);
+		}
+	});
+
+    snowCount = 0;
+
+	function snowFlakes(){
+	    var randomTime = Math.floor(Math.random() * (500) * 1);
+	    setTimeout(function(){
+	        snowCount = snowCount +1;
+	        jquerysnow();
+	        snowFlakes();
+	    },randomTime);
+	}
+
+
+	function jquerysnow() {
+	   var cat = Math.floor(Math.random() * 6) + 1;
+	    if(cat<6){
+	   		var snow = $('<div class="snow"></div>');
+	   }else{
+	   		var snow = $('<div class="snow2"></div>');
+	   }
+        $('#snowflakes').prepend(snow);
+        snowX = Math.floor(Math.random() * $('#snowflakes').width());
+        snowSpd = Math.floor(Math.random() * (500) * 20);
+        snow.css({'left':snowX+'px'});
+        if(cat<6){
+	   		snow.html('<img draggable="false" src="cat.png" id="cat1" width="200"/>');
+
+	   }else{
+	   		snow.html('<img draggable="false" src="cat2.png" id="cat2" width="200"/>');
+	   } 
+		$('img').on('dragstart', function(event) { event.preventDefault(); });
+		$('div').on('dragstart', function(event) { event.preventDefault(); });
+        snow.animate({
+            	top: "950px",
+       		 }, 2000, function(){
+            	$(this).remove();
+        	});
+		}
+
+	function getCookie(cname) {
+	    var name = cname + "=";
+	    var ca = document.cookie.split(';');
+	    for(var i=0; i<ca.length; i++) {
+	        var c = ca[i];
+	        while (c.charAt(0)==' ') c = c.substring(1);
+	        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+	    }
+	    return "";
+	}
+
+	function setCookie(cname, cvalue, exdays) {
+   		var d = new Date();
+    	d.setTime(d.getTime() + (exdays*24*60*60*1000));
+   		var expires = "expires="+d.toUTCString();
+    	document.cookie = cname + "=" + cvalue + "; " + expires;
+	}
+
+
+
+	function victoire(score){
+		var sc = getCookie("score");
+		if(sc != ""){
+			if(sc>score){
+				setCookie("score", score, 365);
+			}
+		}else{
+			var d = new Date();
+    		d.setTime(d.getTime() + (365*24*60*60*1000));
+   			var expires = "expires="+d.toUTCString();
+			document.cookie = 'score='+score+'; '+expires;
+		}
+		window.location.reload();
+	}
+
+		snowFlakes();
+	});
+</script>
+
+<div id="site">
+    <div id="snowflakes"></div>
+    <div id='score'>Score : 0</div>
+    <div id="timer">00:00:00</div>
+    <button id='start'>Start</button>
+    <div id='son'>Allumez le son avant de demarrer</div>
+    <div id='presentation'>
+    	<img draggable="false" src="cat.png" width="50" style="margin-bottom:-20px"/> = 1 point </br></br>
+    	<img draggable="false" src="cat2.png" width="50" style="margin-bottom:-10px"/> = 10 points
+    </div>
+    </br></br></br><div id='consignes'>Atteignez 300 points dans un temps reccord !</div></br> <div id="bestscore">Meilleur temps :  <span id="best"></span></div>
+</div>
+</html>
