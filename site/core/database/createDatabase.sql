@@ -26,7 +26,7 @@ COMMENT = 'Cette table permet de stockre les coordonnées GPS d\'un refuge';
 -- Table `Nuitdelinfo2014`.`Type`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Nuitdelinfo2014`.`Type` (
-  `idType` INT NOT NULL AUTO_INCREMENT,
+  `idType` INT NOT NULL,
   `libelle` VARCHAR(45) NULL DEFAULT 'Public',
   PRIMARY KEY (`idType`))
 ENGINE = InnoDB;
