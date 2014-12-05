@@ -45,11 +45,11 @@ COMMIT;
 START TRANSACTION;
 USE `Nuitdelinfo2014`;
 INSERT INTO `Nuitdelinfo2014`.`Profil` (`idProfil`, `nom`, `prenom`, `descPhysique`, `localisation`, `telephone`, `Refuge_idRefuge`, `User_idUser`) VALUES (1, 'Jean', 'Valjean', 'roux 63kg 1m60 ', 'paris', '0606060606', 1, NULL);
-INSERT INTO `Nuitdelinfo2014`.`Profil` (`idProfil`, `nom`, `prenom`, `descPhysique`, `localisation`, `telephone`, `Refuge_idRefuge`, `User_idUser`) VALUES (2, 'Eugène', 'Rastignac', '60kg 1m73 brun yeux bleu', 'paris', '0607080910', 1, NULL);
+INSERT INTO `Nuitdelinfo2014`.`Profil` (`idProfil`, `nom`, `prenom`, `descPhysique`, `localisation`, `telephone`, `Refuge_idRefuge`, `User_idUser`) VALUES (2, 'EugÃ¨ne', 'Rastignac', '60kg 1m73 brun yeux bleu', 'paris', '0607080910', 1, NULL);
 INSERT INTO `Nuitdelinfo2014`.`Profil` (`idProfil`, `nom`, `prenom`, `descPhysique`, `localisation`, `telephone`, `Refuge_idRefuge`, `User_idUser`) VALUES (3, 'Tintin', 'Milou', '1m02 112kg blanc houpette roux', 'bruxelles', '0611223344', 2, NULL);
 INSERT INTO `Nuitdelinfo2014`.`Profil` (`idProfil`, `nom`, `prenom`, `descPhysique`, `localisation`, `telephone`, `Refuge_idRefuge`, `User_idUser`) VALUES (4, 'Capitaine', 'Haddock', 'juron barbe brun grand marin', 'bruxelles', NULL, 2, 1);
-INSERT INTO `Nuitdelinfo2014`.`Profil` (`idProfil`, `nom`, `prenom`, `descPhysique`, `localisation`, `telephone`, `Refuge_idRefuge`, `User_idUser`) VALUES (5, 'Professeur', 'Tournesol', 'fou petit taré cintré', 'bruxelles', '0512131415', 2, NULL);
-INSERT INTO `Nuitdelinfo2014`.`Profil` (`idProfil`, `nom`, `prenom`, `descPhysique`, `localisation`, `telephone`, `Refuge_idRefuge`, `User_idUser`) VALUES (6, 'Hiromu', 'Arakawa', 'japonaise matte brune bridée mangaka', 'tokyo', NULL, 3, 2);
+INSERT INTO `Nuitdelinfo2014`.`Profil` (`idProfil`, `nom`, `prenom`, `descPhysique`, `localisation`, `telephone`, `Refuge_idRefuge`, `User_idUser`) VALUES (5, 'Professeur', 'Tournesol', 'fou petit tarÃ© cintrÃ©', 'bruxelles', '0512131415', 2, NULL);
+INSERT INTO `Nuitdelinfo2014`.`Profil` (`idProfil`, `nom`, `prenom`, `descPhysique`, `localisation`, `telephone`, `Refuge_idRefuge`, `User_idUser`) VALUES (6, 'Hiromu', 'Arakawa', 'japonaise matte brune bridÃ©e mangaka', 'tokyo', NULL, 3, 2);
 INSERT INTO `Nuitdelinfo2014`.`Profil` (`idProfil`, `nom`, `prenom`, `descPhysique`, `localisation`, `telephone`, `Refuge_idRefuge`, `User_idUser`) VALUES (7, 'Masashi', 'Kishimoto', 'japonais mangaka naruto blond moustache', 'tokyo', '0699887766', 3, NULL);
 INSERT INTO `Nuitdelinfo2014`.`Profil` (`idProfil`, `nom`, `prenom`, `descPhysique`, `localisation`, `telephone`, `Refuge_idRefuge`, `User_idUser`) VALUES (8, 'Naruto', 'Uzumaki', 'japonais kyubi rasengan megafort', 'konoha', '0111111111', 4, 3);
 
