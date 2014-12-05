@@ -169,11 +169,11 @@ function db_getSearchProfile($bdd, $nom, $prenom, $localisation, $telephone)
 
     //Execution de la requête concatenée avec les arguments
     $db_prepared_get_search_profile = $bdd->prepare($request);
-    $db_prepared_get_profile->execute($arr_args);
+    $db_prepared_get_search_profile->execute($arr_args);
    
     $arr_ret = array();
 
-    while($row = $db_prepared_get_profile->fetch())
+    while($row = $db_prepared_get_search_profile->fetch())
     {
        $arr_ret[] = 
             new Profil($row['idProfil'], $row['nom'], $row['prenom'],  $row['descPhysique'], $row['localisation'], $row['telephone'], $row['Refuge_idRefugen'], $row['User_idUser']);
