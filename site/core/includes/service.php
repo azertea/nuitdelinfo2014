@@ -1,8 +1,8 @@
 <?php 
 session_start();
 
-include_once('/core/database/db_functions.php');
-include_once('/core/includes/config.php');
+include_once('../database/db_functions.php');
+include_once('../includes/config.php');
 /*
 
 
