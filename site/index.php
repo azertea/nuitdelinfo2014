@@ -41,14 +41,17 @@
             <div class="col-lg-2 " id="loginForm">
 
                 <button type="button" class="btn btn-login">Login</button>
-                <form role="form" class="form-login">
+                <br/> 
+                <form id="form-login" role="form" class="form-login" >
+                    <input id="isONG" type="checkbox"> HOPE Agent?
+                </br></br>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Login">
+                        <input type="text" id="pseudo" name="login" class="form-control" id="exampleInputEmail1" placeholder="Login">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <input type="password" id="pwd" name="pwd" class="form-control" id="exampleInputPassword1" placeholder="Password">
                     </div>
-                    <button type="submit" class="btn btn-submit">Submit</button>
+                    <button id="index_submit_btn" type="" class="btn btn-submit">Submit</button>
                 </form>
 
             </div>

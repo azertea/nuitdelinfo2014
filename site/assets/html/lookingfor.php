@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/test.css">
     <link rel="stylesheet" href="../css/lookingfor.css">
  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="requete.js"></script>
+<script type="text/javascript" src="requetePublic.js"></script>
     <!-- <link rel="stylesheet" type="text/css" href=""> -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -80,7 +80,9 @@
                 </div>
             </div>
         </div>
+         <div id="result">
 
+        </div>
          <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
   <div class="footer">
                 <div class="col-lg-6 footer-content-left">
