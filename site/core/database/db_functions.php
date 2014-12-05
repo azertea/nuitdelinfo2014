@@ -72,7 +72,7 @@ function db_getUserFromLogin($bdd, $login)
 
     //On fetch les données et on construit l'utilisateur en fonction des attributs
     $row = $db_prepared_get_user_from_id->fetch(); 
-    return new Utilisateur($row['idUser'], $row['login'], $row['pwd'], $row['email'], $row['Refuge_idRefuge'], $row['Type_idType']);
+    return new Useur($row['idUser'], $row['login'], $row['pwd'], $row['email'], $row['Refuge_idRefuge'], $row['Type_idType']);
 
 }
 
@@ -191,7 +191,7 @@ function db_getUserFromProfile($bdd, $profil)
     $db_prepared_get_user->execute(array($profil->getIdUser()));
 
     $row = $db_prepared_get_profile_count>fetch(); 
-    return new Utilisateur($row['idUser'], $row['login'], $row['pwd'], $row['email'], $row['Refuge_idRefuge'], $row['Type_idType']);   
+    return new Useur($row['idUser'], $row['login'], $row['pwd'], $row['email'], $row['Refuge_idRefuge'], $row['Type_idType']);   
 }
 
 /*
