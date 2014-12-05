@@ -1,21 +1,16 @@
 <?php 
 session_start();
 
-include_once '/core/database/db_functions.php';
-include_once '/core/includes/config.php';
+include_once('/core/database/db_functions.php');
+include_once('/core/includes/config.php');
 /*
-- Créer compte recherché
 
-- Créer profil
-
-- Se connecter public / Se connecter ONG
 
 - Modifier profil
 
 - Faire une recherche de public de la part d'un public : envoie une notif à ceux concernés
 - Faire une recherche de public de la part d'une ONG : envoie une notif à ceux concernés
 
-- Déconnexion
 
 */
 
@@ -25,7 +20,7 @@ include_once '/core/includes/config.php';
 //  - (SER_ERR_LOGIN) si login invalide
 //  - (SER_ERR_PASS) si mots de passe invalides
 //  - (SER_ERR_MAIL) si mail invalide
-public function serv_creerCompte($login, $pass1, $pass2, $mail)
+function serv_creerCompte($login, $pass1, $pass2, $mail)
 {
 	Utilisateur $user;
 
@@ -62,7 +57,7 @@ public function serv_creerCompte($login, $pass1, $pass2, $mail)
 //  - (SER_ERR_DESC) si $desc invalide
 //  - (SER_ERR_LOCALISATION) si $localisation invalide
 //  - (SER_ERR_PHONE) si $telephone invalide
-public function serv_creerProfil($nom, $prenom, $desc, $localisation, $telephone)
+function serv_creerProfil($nom, $prenom, $desc, $localisation, $telephone)
 {
 	if (empty($nom)) {
 		return $SER_ERR_NOM;
@@ -105,7 +100,7 @@ public function serv_creerProfil($nom, $prenom, $desc, $localisation, $telephone
 //  - (SER_ERR_USER_NOT_FOUND) Utilisateur inconnu
 //  - (SER_ERR_USER_WRONG_TYPE) Utilisateur de mauvais type (pas public)
 //  - (SER_ERR_USER_WRONG_PWD) Mauvais mot de passe
-public function serv_connecterComptePublic($login, $pass)
+function serv_connecterComptePublic($login, $pass)
 {
 	Utilisateur $user;
 
@@ -150,7 +145,7 @@ public function serv_connecterComptePublic($login, $pass)
 //  - (SER_ERR_USER_NOT_FOUND) Utilisateur inconnu
 //  - (SER_ERR_USER_WRONG_TYPE) Utilisateur de mauvais type (pas public)
 //  - (SER_ERR_USER_WRONG_PWD) Mauvais mot de passe
-public function serv_connecterCompteONG($login, $pass)
+function serv_connecterCompteONG($login, $pass)
 {
 	Utilisateur $user;
 
@@ -189,13 +184,64 @@ public function serv_connecterCompteONG($login, $pass)
 
 // Retourne
 //  - true si connecté
-public function estConnecte()
+function estConnecte()
 {
 	return isset($_SESSION['user']);
 }
 
-public function seDeconnecter()
+function seDeconnecter()
 {
 	unset($_SESSION['user']);
+}
+
+// retourne
+//  - (SER_ERR_DB) si problème avec la base
+//  - vrai si c'est un Utilisateur ONG ou si c'est un Utilisateur Public qui n'a pas encore crée son profil
+function peutAjouterProfil()
+{
+	Utilisateur $user = $_SESSION['user'];
+	$nbProfile = 0;
+
+	if ($user->getIdType() == $TYPE_USER_ONG) {
+		return true;
+	}
+
+	try {
+		db_open();
+		$nbProfile = db_nbProfileFromUser($user);
+		db_close();
+	} catch (Exception $e) {
+		return $SER_ERR_DB;
+	}
+
+	return $nbProfile < 1;
+}
+
+// Retourne :
+//  - (SER_ERR_DB) si problème avec la base
+//  - la liste des profils pour l'utilisateur connecté
+function listeProfil()
+{
+	$listProfile = array();
+
+	try {
+		db_open();
+		$listProfile = db_getProfilesFromUser($user);
+		db_close();
+	} catch (Exception $e) {
+		return $SER_ERR_DB;
+	}
+
+	return $listProfile;
+}
+
+function rechercheProfil($keywordDesc, $keywordLoc)
+{
+	# code...
+}
+
+function serv_modificationProfil($new_nom, $new_prenom, $new_desc, $new_localisation, $new_telephone)
+{
+
 }
 ?>
