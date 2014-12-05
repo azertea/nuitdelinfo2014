@@ -10,14 +10,14 @@
 		/* ******************************************************
 		 * 	Attributs
 		 * ******************************************************/
-		private $idProfil;
-		private $nom;
-		private $prenom;
-		private $descPhysique;
-		private $localisation;
-		private $telephone;
-		private $idRefuge;
-		private $idUser;
+		public $idProfil;
+		public $nom;
+		public $prenom;
+		public $descPhysique;
+		public $localisation;
+		public $telephone;
+		public $idRefuge;
+		public $idUser;
 
 
 		public function __construct($idProfil, $nom, $prenom,

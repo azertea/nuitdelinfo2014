@@ -8,8 +8,8 @@
 		/* ******************************************************
 		 * 	Attributs
 		 * ******************************************************/
-		private $idRefuge;
-		private $GPS;
+		public $idRefuge;
+		public $GPS;
 
 
 		public function __construct($idRefuge, $GPS) {
