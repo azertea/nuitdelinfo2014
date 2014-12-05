@@ -8,3 +8,13 @@
   height: 40px;
 }
 
+
+.map-container {
+  height: 300px;
+  width: auto;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+}
