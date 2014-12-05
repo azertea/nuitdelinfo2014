@@ -163,6 +163,12 @@ function db_getSearchProfile($bdd, $nom, $prenom, $desc, $localisation, $telepho
         $request = $request . 'UPPER(telephone) LIKE UPPER(?) AND ';
         $arr_args[] = '%' . $telephone . '%';
     }
+
+    if(!empty($desc))
+    {
+        $request = $request . 'UPPER(descPhysique) LIKE UPPER(?) AND ';
+        $arr_args[] = '%' . $desc . '%';
+    }
     
     //On termine la requete avec 1=1 (on avait un AND, il faut une dernière condition)
     $request = $request . '1 = 1 LIMIT 10';

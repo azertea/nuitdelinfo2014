@@ -270,9 +270,9 @@ function rechercheProfilPublic($nom, $prenom, $desc, $localisation, $telephone)
 		return SER_ERR_DB;
 	}
 
-	foreach ($listMail as $key => $mail) {
-		envoyerMailFromPublic($mail);
-	}
+	// foreach ($listMail as $key => $mail) {
+	// 	envoyerMailFromPublic($mail);
+	// }
 
 	return count($listProfile);
 }
@@ -293,7 +293,7 @@ function rechercheProfilONG($nom, $prenom, $desc, $localisation, $telephone)
 	try {
 		$bdd = db_open();
 		$listProfile = db_getSearchProfile($bdd, $nom, $prenom, $desc, $localisation, $telephone);
-
+		
 		// Contacter la liste des personnes
 		foreach ($listProfile as $key => $profil) {
 			$user = db_getUserFromProfile($bdd,$profil);
@@ -306,9 +306,9 @@ function rechercheProfilONG($nom, $prenom, $desc, $localisation, $telephone)
 		return SER_ERR_DB;
 	}
 
-	foreach ($listMail as $key => $mail) {
-		envoyerMailFromONG($mail);
-	}
+	// foreach ($listMail as $key => $mail) {
+	// 	envoyerMailFromONG($mail);
+	// }
 
 	return $listProfile;
 }
