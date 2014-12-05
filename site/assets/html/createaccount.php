@@ -17,7 +17,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
   <![endif]-->
 
-    <title>I'm Here!</title>
+    <title>Create an account</title>
 </head>
 
 <body>
@@ -44,8 +44,21 @@
         <div class="row middle">
             <div class="col-lg-5 ">
                 <div class="form-group form-looking">
-
-                    <div type="button" class="lookingfor">I am</div>
+                    
+                        <div class="lookingfor">Account informations :</div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Login">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Confirm password">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Email@adress">
+                    </div>
+                    <div class="lookingfor">I am :</div>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Name">
                     </div>
@@ -63,7 +76,7 @@
 
                     <textarea name="Message" class="form-control" placeholder="Let a message for the person who are searching for you"></textarea>
                 </div>
-                <button type="button" class="btn btn-login">Submit</button>
+                <button type="button" class="btn btn-login">Get Hope</button>
 
 
             </div>
@@ -72,7 +85,7 @@
             <div class="col-lg-5">
                 <div class="form-group">
                     <div class="lookingfor">
-                        And I am :
+                        And I am there:
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Location">
