@@ -15,7 +15,10 @@ body {
   
 }
 
-
+.subtitle{
+  color:#32B76A;
+  font-size: 20;
+}
 
 .logoImg {
   width: 80%;

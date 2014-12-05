@@ -25,15 +25,15 @@ function serv_creerCompte($login, $pass1, $pass2, $mail)
 	$user;
 
 	if (empty($login)) {
-		return $SER_ERR_LOGIN;
+		return SER_ERR_LOGIN;
 	}
 
 	if ($pass1 != $pass2 || empty($pass1)) {
-		return $SER_ERR_PASS;
+		return SER_ERR_PASS;
 	}
 
 	if (empty($mail) || !filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-		return $SER_ERR_MAIL;
+		return SER_ERR_MAIL;
 	}
 
 	try {
@@ -41,7 +41,7 @@ function serv_creerCompte($login, $pass1, $pass2, $mail)
 		$user = db_createAccount($login,sha1($pass1),$mail);
 		db_close();
 	} catch (Exception $e) {
-		return $SER_ERR_DB;
+		return SER_ERR_DB;
 	}
 
 	$_SESSION['user'] = $user;
@@ -60,23 +60,23 @@ function serv_creerCompte($login, $pass1, $pass2, $mail)
 function serv_creerProfil($nom, $prenom, $desc, $localisation, $telephone)
 {
 	if (empty($nom)) {
-		return $SER_ERR_NOM;
+		return SER_ERR_NOM;
 	} 
 
 	if (empty($prenom)) {
-		return $SER_ERR_PRENOM;
+		return SER_ERR_PRENOM;
 	} 
 
 	if (empty($desc)) {
-		return $SER_ERR_DESC;
+		return SER_ERR_DESC;
 	} 
 
 	if (empty($localisation)) {
-		return $SER_ERR_LOCALISATION;
+		return SER_ERR_LOCALISATION;
 	} 
 
 	if (empty($telephone)) {
-		return $SER_ERR_PHONE;
+		return SER_ERR_PHONE;
 	}
 
 	$user = $_SESSION['user'];
@@ -86,7 +86,7 @@ function serv_creerProfil($nom, $prenom, $desc, $localisation, $telephone)
 		db_createProfile($user, $nom, $prenom, $desc, $localisation, $telephone);
 		db_close();
 	} catch (Exception $e) {
-		return $SER_ERR_DB;
+		return SER_ERR_DB;
 	}
 
 	return true;
@@ -105,11 +105,11 @@ function serv_connecterComptePublic($login, $pass)
 	$user;
 
 	if (empty($login)) {
-		return $SER_ERR_LOGIN;
+		return SER_ERR_LOGIN;
 	}
 
 	if (empty($pass)) {
-		return $SER_ERR_PASS;
+		return SER_ERR_PASS;
 	}
 
 	try {
@@ -118,18 +118,18 @@ function serv_connecterComptePublic($login, $pass)
 		db_close();
 
 		if (is_null($user)) {
-			return $SER_ERR_USER_NOT_FOUND;
+			return SER_ERR_USER_NOT_FOUND;
 		}
 
-		if ($user->getIdType() != $TYPE_USER_PUBLIC) {
-			return $SER_ERR_USER_WRONG_TYPE;
+		if ($user->getIdType() != TYPE_USER_PUBLIC) {
+			return SER_ERR_USER_WRONG_TYPE;
 		}
 
 		if ($user->getPwd() != sha1($pass)) {
-			return $SER_ERR_USER_WRONG_PWD;
+			return SER_ERR_USER_WRONG_PWD;
 		}
 	} catch (Exception $e) {
-		return $SER_ERR_DB;
+		return SER_ERR_DB;
 	}
 
 	$_SESSION['user'] = $user;
@@ -150,11 +150,11 @@ function serv_connecterCompteONG($login, $pass)
 	$user;
 
 	if (empty($login)) {
-		return $SER_ERR_LOGIN;
+		return SER_ERR_LOGIN;
 	}
 
 	if (empty($pass)) {
-		return $SER_ERR_PASS;
+		return SER_ERR_PASS;
 	}
 
 	try {
@@ -163,18 +163,18 @@ function serv_connecterCompteONG($login, $pass)
 		db_close();
 
 		if (is_null($user)) {
-			return $SER_ERR_USER_NOT_FOUND;
+			return SER_ERR_USER_NOT_FOUND;
 		}
 
-		if ($user->getIdType() != $TYPE_USER_ONG) {
-			return $SER_ERR_USER_WRONG_TYPE;
+		if ($user->getIdType() != TYPE_USER_ONG) {
+			return SER_ERR_USER_WRONG_TYPE;
 		}
 
 		if ($user->getPwd() != sha1($pass)) {
-			return $SER_ERR_USER_WRONG_PWD;
+			return SER_ERR_USER_WRONG_PWD;
 		}
 	} catch (Exception $e) {
-		return $SER_ERR_DB;
+		return SER_ERR_DB;
 	}
 
 	$_SESSION['user'] = $user;
@@ -202,7 +202,7 @@ function peutAjouterProfil()
 	$user = $_SESSION['user'];
 	$nbProfile = 0;
 
-	if ($user->getIdType() == $TYPE_USER_ONG) {
+	if ($user->getIdType() == TYPE_USER_ONG) {
 		return true;
 	}
 
@@ -211,7 +211,7 @@ function peutAjouterProfil()
 		$nbProfile = db_nbProfileFromUser($user);
 		db_close();
 	} catch (Exception $e) {
-		return $SER_ERR_DB;
+		return SER_ERR_DB;
 	}
 
 	return $nbProfile < 1;
@@ -229,7 +229,7 @@ function listeProfil()
 		$listProfile = db_getProfileFromUser($user);
 		db_close();
 	} catch (Exception $e) {
-		return $SER_ERR_DB;
+		return SER_ERR_DB;
 	}
 
 	return $listProfile;
@@ -245,7 +245,7 @@ function rechercheProfilPublic($nom, $prenom, $desc, $localisation, $telephone)
 	$listMail = array();
 
 	if (empty($nom) && empty($prenom) && empty($desc) && empty($localisation) && empty($telephone)) {
-		return $SER_ERR_EMPTY_PARAM_SEARCH;
+		return SER_ERR_EMPTY_PARAM_SEARCH;
 	}
 
 	try {
@@ -260,7 +260,7 @@ function rechercheProfilPublic($nom, $prenom, $desc, $localisation, $telephone)
 
 		db_close();
 	} catch (Exception $e) {
-		return $SER_ERR_DB;
+		return SER_ERR_DB;
 	}
 
 	foreach ($listMail as $key => $mail) {
@@ -280,7 +280,7 @@ function rechercheProfilONG($nom, $prenom, $desc, $localisation, $telephone)
 	$listMail = array();
 
 	if (empty($nom) && empty($prenom) && empty($desc) && empty($localisation) && empty($telephone)) {
-		return $SER_ERR_EMPTY_PARAM_SEARCH;
+		return SER_ERR_EMPTY_PARAM_SEARCH;
 	}
 
 	try {
@@ -295,7 +295,7 @@ function rechercheProfilONG($nom, $prenom, $desc, $localisation, $telephone)
 
 		db_close();
 	} catch (Exception $e) {
-		return $SER_ERR_DB;
+		return SER_ERR_DB;
 	}
 
 	foreach ($listMail as $key => $mail) {
@@ -306,16 +306,17 @@ function rechercheProfilONG($nom, $prenom, $desc, $localisation, $telephone)
 }
 
 
-////////////////////////////////////////
-/////////// Fonction privées ///////////
+//////////////////////////////////////////
+/////////// Fonctions privées ////////////
+//////////////////////////////////////////
 
 function envoyerMailFromPublic($mailDest)
 {
 	$user = $_SESSION['user'];
 	$mailSource = $user->getEmail();
 
-	$content = "un utilisateur public (" . $mailSource . ") vous a recherché.".
-	envoyerMail($content, $mailDest)
+	$content = "un utilisateur public (" . $mailSource . ") vous a recherché.";
+	envoyerMail($content, $mailDest);
 }
 
 function envoyerMailFromONG($mailDest)
@@ -323,8 +324,8 @@ function envoyerMailFromONG($mailDest)
 	$user = $_SESSION['user'];
 	$mailSource = $user->getEmail();
 
-	$content = "une ONG (" . $mailSource . ") vous a recherché.".
-	envoyerMail($content, $mailDest)
+	$content = "une ONG (" . $mailSource . ") vous a recherché.";
+	envoyerMail($content, $mailDest);
 }
 
 function envoyerMail($content, $mailDest)

@@ -15,7 +15,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
   <![endif]-->
 
-    <title>I'm Here!</title>
+    <title>My profile</title>
 </head>
 
 <body>
@@ -29,39 +29,25 @@
             <div class="col-lg-5 logoContainer">
                 <a href="../../index.html">
                 <img class="logoImg" href="index.html" src="../img/logo.png" alt="">
-            </a>
+                </a>
             </div>
 
         </div>
-
+</br></br>
         <div class="row">
-            <div class="col-lg-4">
-                <span class="subtitle">I am :</span> 
-                <div class="form-group">
-  <input type="text" class="form-control" placeholder="Name">
-</div>
-<div class="form-group">
-  <input type="text" class="form-control" placeholder="First Name">
-</div>
-<div class="form-group">
-  <textarea name="descPhysique" class="form-control" placeholder="Physical description"></textarea>
-</div>
-
-<div class="form-group">
-  <input type="text" class="form-control" placeholder="Phone number">
-</div>
-
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3">
+                [Photo here]
             </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5">
+                données récupérées via la base en PHP
+            </div>
+            <div class="col-lg-2">
+                <button class="">
+            </div>  
 <div class="col-lg-2">
 </div>    
-            <div class="col-lg-5">
-                And I'm here :
-                <div class="form-group">
-  <input type="text" class="form-control" placeholder="Location">
-</div>
-                MAP
-            </div>
-        </div>
 
 
         <div class="row">
@@ -77,13 +63,6 @@
         </div>
 
     </div>
-</br>
-    <div class="row">
-        <div class="impu-group">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-7">
-  <textarea name="Message" class="form-control" placeholder="Let a message"></textarea>
-</div>
 </div>
     </div>
 </body>
