@@ -38,7 +38,7 @@
                 </a>
             </div>
 
-            <div class="col-lg-2 ">
+            <div class="col-lg-2 " id="loginForm">
 
                 <button type="button" class="btn btn-login">Login</button>
                 <form role="form" class="form-login">
@@ -53,6 +53,10 @@
 
             </div>
 
+            <div class="col-lg-2 " id="alreadyLoggedInForm" style="display:none;">
+                <a href="/assets/html/imhere.php">Access my profile</a>
+            </div>
+
         </div>
         <div class="row head-text">
             <div class="col-lg-12">
@@ -64,7 +68,7 @@
         <div class="row middle">
             <div class="col-lg-5">
                 <a href="./assets/html/lookingfor.php">
-                    <button type="button" href="./assets/html/lookingfor.php" class="btn btn-main">
+                    <button type="button" href="./assets/html/createaccount.php?next=search" id="buttonLookFor" class="btn btn-main">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                         </br>
                         </br>
@@ -77,7 +81,7 @@
 
             </div>
             <div class="col-lg-5">
-                <a href="./assets/html/imhere.php">
+                <a href="./assets/html/createaccount.php?next=search"  id="buttonIAmHere" >
                     <button type="button" class="btn btn-main">
 
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -106,5 +110,30 @@
 </nav>
 
 </body>
+
+<script>
+
+function alreadyLoggedIn() {
+    $("#buttonLookFor").attr("href", "/assets/html/lookingfor.php");
+    $("#buttonIAmHere").attr("href", "/assets/html/imhere.php");
+    $("#loginForm").hide();
+    $("#alreadyLoggedInForm").show();
+}
+
+$(document).ready(function() {
+
+    $.ajax({
+        "type": "GET",
+        "url": "/core/api/api.php?type=0&method=60"
+        success: function(data) {
+            if (data == "1") {
+                alreadyLoggedIn();
+            }
+        }
+    })
+
+});
+
+</script>
 
 </html>
