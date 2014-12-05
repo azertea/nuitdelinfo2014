@@ -251,15 +251,15 @@ function handlerSearch(){
 }
 
 function userPublicSearch(){
-/*	//if (!isset($_POST['desc']) || !isset($_POST['loc']) || !isset($_POST['login'])) //TODO Test set fields
+	if (!isset($_POST['name']) || !isset($_POST['forename']) || !isset($_POST['desc']) || !isset($_POST['loc']) || !isset($_POST['phone']))
 		errorBadRequest("Missing User Field(s)");
-	return json_encode(rechercheProfilPublic(//TODO complete args));
-*/}
+	return json_encode(rechercheProfilPublic($_POST['name'],$_POST['forename'],$_POST['desc'],$_POST['loc'],$_POST['phone']);
+}
 
 function userONGSearch(){
-/*	//if (!isset($_POST['desc']) || !isset($_POST['loc']) || !isset($_POST['login'])) //TODO Test set fields
+	if (!isset($_POST['name']) || !isset($_POST['forename']) || !isset($_POST['desc']) || !isset($_POST['loc']) || !isset($_POST['phone']))
 		errorBadRequest("Missing User Field(s)");
-	return json_encode(rechercheProfilONG(//TODO complete args));
-*/}
+	return json_encode(rechercheProfilONG($_POST['name'],$_POST['forename'],$_POST['desc'],$_POST['loc'],$_POST['phone']);
+}
 
 ?>
