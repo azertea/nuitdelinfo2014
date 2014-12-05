@@ -4,7 +4,7 @@
 	 * Classe correspondante à un type de profil utilisateur (ONG, Public)
 	 * @author Yseult B., Malik I.
 	 */
-	public class Type
+	class Type
 	{
 		/* ******************************************************
 		 * 	Attributs
@@ -37,5 +37,5 @@
 			$this->libelle = $libelle;
 		}
 	}
-	
+
 ?>

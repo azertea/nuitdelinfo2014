@@ -4,7 +4,7 @@
 	 * Classe correspondante à une recherche de mots-clefs par un utilisateur
 	 * @author Yseult B., Malik I.
 	 */
-	public class Recherche
+	class Recherche
 	{
 
 		/* ******************************************************

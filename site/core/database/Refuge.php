@@ -3,7 +3,7 @@
 	 * Classe correspondante à un camp de réfugiés/une agence de l'ONG/...
 	 * @author Yseult B., Malik I.
 	 */
-	public class Recherche
+	class Recherche
 	{
 		/* ******************************************************
 		 * 	Attributs

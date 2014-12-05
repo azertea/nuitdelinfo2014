@@ -4,7 +4,7 @@
 	 * Classe correspondante à un profil utilisateur
 	 * @author Yseult B., Malik I.
 	 */
-	public class Profil
+	class Profil
 	{
 
 		/* ******************************************************
