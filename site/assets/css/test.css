@@ -30,12 +30,12 @@ body {
   margin-top: 15px;
 }
 
-.btn-login{
+.btn-login, .btn-submit{
   color: #FFFFFF;
   background-color: #32B76A;
   margin-top:15px;
 }
-.btn-login:hover{
+.btn-login:hover, .btn-submit:hover{
   color: #32B76A;
   background-color: #FFFFFF;
 }
