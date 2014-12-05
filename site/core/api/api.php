@@ -48,7 +48,7 @@ function handlerUserPublic(){
 		break;*/
 
 		case ROUTE_METHOD_ALTER:
-			methodDelUserPublic();
+			methodAlterUserPublic();
 		break;
 
 		case ROUTE_METHOD_CONNECT:
@@ -61,6 +61,14 @@ function handlerUserPublic(){
 
 		case ROUTE_METHOD_ISCONNECTED:
 		 	methodIsConnectedUserPublic();
+		break;
+		
+		case ROUTE_METHOD_CAN_ADD:
+			methodCanAddProfile();
+		break;
+		
+		case ROUTE_METHOD_GET_PROFILE_LIST:
+			methodGetListProfile();
 		break;
 
 	}
@@ -165,7 +173,15 @@ function handlerUserONG(){
 		break;
 
 		case ROUTE_METHOD_DISCONNECT:
-			methodIsConnectedUserONG();
+			methodDisconnectUserONG();
+		break;
+		
+		case ROUTE_METHOD_CAN_ADD:
+			methodCanAddProfile();
+		break;
+		
+		case ROUTE_METHOD_GET_PROFILE_LIST:
+			methodGetListProfile();
 		break;
 
 	}	
@@ -234,6 +250,13 @@ function methodAlterProfile(){
 	/*TODO SWITCH*/
 }
 
+function methodCanAddProfile(){
+	echo (json_encode((serv_peutAjouterProfil()) ? 1 : 0));
+}
+
+function methodGetListProfile(){
+	echo (json_encode(serv_listeProfil()));
+}
 
 /**
 
