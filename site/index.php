@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/test.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="assets/js/login.js"></script>
 
@@ -91,14 +92,15 @@
 
 
 
-        <div class="footer">
-            <div class="row ">
-                <div class="col-lg-12 footer-content">
-                    <a href="assets/html/Eggs/Cat_game.html">jeuduchat</a>
-                </div>
-            </div>
-        </div>
+        
     </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <div class="footer">
+                <div class="col-lg-12 footer-content">
+                    <a href="assets/html/Eggs/Cat_game.html"><span class="glyphicon glyphicon-gift" aria-hidden="true"></span></a>
+                </div>
+  </div>
+</nav>
 
 </body>
 
