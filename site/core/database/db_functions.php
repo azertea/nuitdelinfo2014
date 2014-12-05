@@ -142,25 +142,25 @@ function db_getSearchProfile($nom, $prenom, $localisation, $telephone)
     //Pour le rajouter à la condition de requête et dans les tableau d'arguments
     if(!is_null($nom))
     {
-        $request = $request . 'nom LIKE ? AND';
+        $request = $request . 'UPPER(nom) LIKE UPPER(?) AND';
         $arr_args[] = '%' . $nom . '%';
     }
     
     if(!is_null($prenom))
     {
-        $request = $request . 'prenom LIKE ? AND';
+        $request = $request . 'UPPER(prenom) LIKE UPPER(?) AND';
         $arr_args[] = '%' . $prenom . '%';
     }
     
     if(!is_null($localisation))
     {
-        $request = $request . 'localisation LIKE ? AND';
+        $request = $request . 'UPPER(localisation) LIKE UPPER(?) AND';
         $arr_args[] = '%' . $localisation . '%';
     }
     
     if(!is_null($telephone))
     {
-        $request = $request . 'telephone LIKE ? AND';
+        $request = $request . 'UPPER(telephone) LIKE UPPER(?) AND';
         $arr_args[] = '%' . $telephone . '%';
     }
     
