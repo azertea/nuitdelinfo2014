@@ -133,6 +133,10 @@ function methodConnectUserPublic() {
 		case SER_ERR_PASS :
 			errorForbidden();
 		break;
+		case SER_ERR_USER_WRONG_TYPE :
+			errorForbidden();
+		break;
+
 	}
 }
  function methodIsConnectedUserPublic() {
@@ -190,7 +194,7 @@ function handlerUserONG(){
 function methodConnectUserONG(){
 	if (!isset($_POST['login']) || !isset($_POST['pwd']))
 		errorBadRequest("Missing Field(s)");
-
+	print_r(serv_connecterCompteONG($_POST));
 	switch(serv_connecterCompteONG($_POST['login'], $_POST['pwd'])) {
 		
 		case SER_ERR_LOGIN :
@@ -198,6 +202,10 @@ function methodConnectUserONG(){
 		break;
 
 		case SER_ERR_PASS :
+			errorForbidden();
+		break;
+
+		case SER_ERR_USER_WRONG_TYPE:
 			errorForbidden();
 		break;
 	}	
