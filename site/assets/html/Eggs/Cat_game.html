@@ -40,21 +40,11 @@ body {
 #score{
     font-weight: bold;
     font-size: 45px;
-    -webkit-user-select: none; /* Safari, Chrome */
-    -khtml-user-select: none; /* Konqueror */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE */
-    user-select: none;
 }
 
 #timer{
     font-weight: bold;
     font-size: 45px;
-    -webkit-user-select: none; /* Safari, Chrome */
-    -khtml-user-select: none; /* Konqueror */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE */
-    user-select: none;
 }
 
 #start{
@@ -205,9 +195,9 @@ $(document).on("click","#start",function(){
 	function jquerysnow() {
 	   var cat = Math.floor(Math.random() * 6) + 1;
 	    if(cat<6){
-	   		var snow = $('<div class="snow" width="250"></div>');
+	   		var snow = $('<div class="snow"></div>');
 	   }else{
-	   		var snow = $('<div class="snow2" width="250"></div>');
+	   		var snow = $('<div class="snow2"></div>');
 	   }
         $('#snowflakes').prepend(snow);
         snowX = Math.floor(Math.random() * $('#snowflakes').width());
