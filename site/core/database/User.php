@@ -9,12 +9,12 @@
 		/* ******************************************************
 		 * 	Attributs
 		 * ******************************************************/
-		private idUser;
-		private login;
-		private pwd;
-		private email;
-		private idRefuge;
-		private idType;
+		private $idUser;
+		private $login;
+		private $pwd;
+		private $email;
+		private $idRefuge;
+		private $idType;
 
 
 		public function __construct($idUser, $login, $pwd, 

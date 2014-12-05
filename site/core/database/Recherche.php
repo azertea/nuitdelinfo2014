@@ -10,10 +10,10 @@
 		/* ******************************************************
 		 * 	Attributs
 		 * ******************************************************/
-		private idRecherche;
-		private keywordDesc;
-		private keywordLoc;
-		private userId;
+		private $idRecherche;
+		private $keywordDesc;
+		private $keywordLoc;
+		private $userId;
 
 
 		public function __construct($idRecherche, $keywordDesc,
