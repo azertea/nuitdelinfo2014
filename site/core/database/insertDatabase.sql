@@ -28,14 +28,14 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `Nuitdelinfo2014`;
-INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (1,'Haddock','haddock','c.haddock@br.br',NULL,2);
-INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (2,'Hiromu','hiromu','h@japan.jp',NULL,2);
-INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (3,'Naruto','naruto','naruto@japan.jp',NULL,2);
-INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (4,'ONGParis','paris','p@p.paris',1,1);
-INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (5,'ONGBruxelles','bruxelles','b@b.bruxelles',2,1);
-INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (6,'ONGTokyo','tokyo','t@t.tokyo',3,1);
-INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (7,'ONGKonoha','konoha','k@k.konoha',4,1);
-INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (8,'ONGBali','bali','bali@balo.lol',5,1);
+INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (1,'Haddock', sha1('haddock'),'c.haddock@br.br',NULL,2);
+INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (2,'Hiromu', sha1('hiromu'),'h@japan.jp',NULL,2);
+INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (3,'Naruto',sha1('naruto'),'naruto@japan.jp',NULL,2);
+INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (4,'ONGParis',sha1('paris'),'p@p.paris',1,1);
+INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (5,'ONGBruxelles',sha1('bruxelles'),'b@b.bruxelles',2,1);
+INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (6,'ONGTokyo',sha1('tokyo'),'t@t.tokyo',3,1);
+INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (7,'ONGKonoha',sha1('konoha'),'k@k.konoha',4,1);
+INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (8,'ONGBali',sha1('bali'),'bali@balo.lol',5,1);
 
 COMMIT;
 
@@ -47,7 +47,7 @@ USE `Nuitdelinfo2014`;
 INSERT INTO `Nuitdelinfo2014`.`Profil` (`idProfil`, `nom`, `prenom`, `descPhysique`, `localisation`, `telephone`, `Refuge_idRefuge`, `User_idUser`) VALUES (1, 'Jean', 'Valjean', 'roux 63kg 1m60 ', 'paris', '0606060606', 1, NULL);
 INSERT INTO `Nuitdelinfo2014`.`Profil` (`idProfil`, `nom`, `prenom`, `descPhysique`, `localisation`, `telephone`, `Refuge_idRefuge`, `User_idUser`) VALUES (2, 'Eugène', 'Rastignac', '60kg 1m73 brun yeux bleu', 'paris', '0607080910', 1, NULL);
 INSERT INTO `Nuitdelinfo2014`.`Profil` (`idProfil`, `nom`, `prenom`, `descPhysique`, `localisation`, `telephone`, `Refuge_idRefuge`, `User_idUser`) VALUES (3, 'Tintin', 'Milou', '1m02 112kg blanc houpette roux', 'bruxelles', '0611223344', 2, NULL);
-INSERT INTO `Nuitdelinfo2014`.`Profil` (`idProfil`, `nom`, `prenom`, `descPhysique`, `localisation`, `telephone`, `Refuge_idRefuge`, `User_idUser`) VALUES (4, 'Capitaine', 'Haddock', 'juron barbe brun grand marin', 'bruxelles', '', 2, 1);
+INSERT INTO `Nuitdelinfo2014`.`Profil` (`idProfil`, `nom`, `prenom`, `descPhysique`, `localisation`, `telephone`, `Refuge_idRefuge`, `User_idUser`) VALUES (4, 'Capitaine', 'Haddock', 'juron barbe brun grand marin', 'bruxelles', NULL, 2, 1);
 INSERT INTO `Nuitdelinfo2014`.`Profil` (`idProfil`, `nom`, `prenom`, `descPhysique`, `localisation`, `telephone`, `Refuge_idRefuge`, `User_idUser`) VALUES (5, 'Professeur', 'Tournesol', 'fou petit taré cintré', 'bruxelles', '0512131415', 2, NULL);
 INSERT INTO `Nuitdelinfo2014`.`Profil` (`idProfil`, `nom`, `prenom`, `descPhysique`, `localisation`, `telephone`, `Refuge_idRefuge`, `User_idUser`) VALUES (6, 'Hiromu', 'Arakawa', 'japonaise matte brune bridée mangaka', 'tokyo', NULL, 3, 2);
 INSERT INTO `Nuitdelinfo2014`.`Profil` (`idProfil`, `nom`, `prenom`, `descPhysique`, `localisation`, `telephone`, `Refuge_idRefuge`, `User_idUser`) VALUES (7, 'Masashi', 'Kishimoto', 'japonais mangaka naruto blond moustache', 'tokyo', '0699887766', 3, NULL);
