@@ -77,15 +77,20 @@ color: #FFFFFF;
   font-size: 45pt;
 }
 
-.footer-content{
+.footer-content-left,.footer-content-right{
   text-align: center;
   color: #32B76A;
   font-size: 25pt;
 }
-.footer-content:hover{
+.footer-content-left:hover{
   text-align: center;
   color: #cccccc;
   font-size: 25pt;
 }
 
-
+.footer-content-right:hover{
+  text-align: center;
+  text-decoration: none;
+  color: #cccccc;
+  font-size: 25pt;
+}
