@@ -51,7 +51,7 @@ function db_createAccount($bdd, $login, $pwd, $mail)
     $db_prepared_insert_compte->execute();
 
     //On récupère l'utilisateur inseré
-    $user = db_getUserFromLogin($login);
+    $user = db_getUserFromLogin($bdd, $login);
     
     if(is_null($user))
     {
