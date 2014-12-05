@@ -64,7 +64,7 @@
             <div class="col-lg-2">
             </div>
             <div class="col-lg-5">
-                <div class="lookingfor">
+                <div class="form-group">
                     And he should be there :
                     <div class="form-group">
                         <input id= "form_location" type="text" class="form-control" placeholder="Location">
