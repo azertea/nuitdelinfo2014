@@ -24,6 +24,7 @@ define("TYPE_USER_ONG", 1);
 	Codes d'erreur
 */
 
+define("SER_VALID", 1);
 define("SER_ERR_DB", -1);
 define("SER_ERR_LOGIN", -2);
 define("SER_ERR_PASS", -3);
