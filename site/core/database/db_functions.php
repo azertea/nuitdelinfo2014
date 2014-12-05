@@ -38,7 +38,7 @@ function db_createAccount($login, $pwd, $mail)
     $db_prepared_insert_compte->bindParam(':pwd', $pwd);
     $db_prepared_insert_compte->bindParam(':email', $mail);
 
-    $db_prepared_insert_compte->execute()
+    $db_prepared_insert_compte->execute();
     $user = db_getUserFromLogin($login);
     
     if(is_null($user))
