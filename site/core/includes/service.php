@@ -1,8 +1,8 @@
 <?php 
 session_start();
 
-include_once('/core/database/db_functions.php');
-include_once('/core/includes/config.php');
+include_once('../database/db_functions.php');
+include_once('../includes/config.php');
 /*
 
 
@@ -22,7 +22,7 @@ include_once('/core/includes/config.php');
 //  - (SER_ERR_MAIL) si mail invalide
 function serv_creerCompte($login, $pass1, $pass2, $mail)
 {
-	Utilisateur $user;
+	$user;
 
 	if (empty($login)) {
 		return $SER_ERR_LOGIN;
@@ -79,7 +79,7 @@ function serv_creerProfil($nom, $prenom, $desc, $localisation, $telephone)
 		return $SER_ERR_PHONE;
 	}
 
-	Utilisateur $user = $_SESSION['user'];
+	$user = $_SESSION['user'];
 
 	try {
 		db_open();
@@ -102,7 +102,7 @@ function serv_creerProfil($nom, $prenom, $desc, $localisation, $telephone)
 //  - (SER_ERR_USER_WRONG_PWD) Mauvais mot de passe
 function serv_connecterComptePublic($login, $pass)
 {
-	Utilisateur $user;
+	$user;
 
 	if (empty($login)) {
 		return $SER_ERR_LOGIN;
@@ -147,7 +147,7 @@ function serv_connecterComptePublic($login, $pass)
 //  - (SER_ERR_USER_WRONG_PWD) Mauvais mot de passe
 function serv_connecterCompteONG($login, $pass)
 {
-	Utilisateur $user;
+	$user;
 
 	if (empty($login)) {
 		return $SER_ERR_LOGIN;
@@ -199,7 +199,7 @@ function seDeconnecter()
 //  - vrai si c'est un Utilisateur ONG ou si c'est un Utilisateur Public qui n'a pas encore crée son profil
 function peutAjouterProfil()
 {
-	Utilisateur $user = $_SESSION['user'];
+	$user = $_SESSION['user'];
 	$nbProfile = 0;
 
 	if ($user->getIdType() == $TYPE_USER_ONG) {
@@ -226,7 +226,7 @@ function listeProfil()
 
 	try {
 		db_open();
-		$listProfile = db_getProfilesFromUser($user);
+		$listProfile = db_getProfileFromUser($user);
 		db_close();
 	} catch (Exception $e) {
 		return $SER_ERR_DB;
