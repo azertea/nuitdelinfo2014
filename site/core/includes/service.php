@@ -188,12 +188,12 @@ function serv_connecterCompteONG($login, $pass)
 
 // Retourne
 //  - true si connecté
-function estConnecte()
+function serv_estConnecte()
 {
 	return isset($_SESSION['user']);
 }
 
-function seDeconnecter()
+function serv_seDeconnecter()
 {
 	unset($_SESSION['user']);
 }
@@ -201,7 +201,7 @@ function seDeconnecter()
 // retourne
 //  - (SER_ERR_DB) si problème avec la base
 //  - vrai si c'est un Utilisateur ONG ou si c'est un Utilisateur Public qui n'a pas encore crée son profil
-function peutAjouterProfil()
+function serv_peutAjouterProfil()
 {
 	$user = $_SESSION['user'];
 	$nbProfile = 0;
@@ -225,7 +225,7 @@ function peutAjouterProfil()
 // Retourne :
 //  - (SER_ERR_DB) si problème avec la base
 //  - la liste des profils pour l'utilisateur connecté
-function listeProfil()
+function serv_listeProfil()
 {
 	$listProfile = array();
 
@@ -245,7 +245,7 @@ function listeProfil()
 //  - (SER_ERR_EMPTY_PARAM_SEARCH) si tous les champs sont vides
 //  - (SER_ERR_DB) si problème avec la base
 //  - Le nombre de personnes quiont étés contactées suite à la recherche
-function rechercheProfilPublic($nom, $prenom, $desc, $localisation, $telephone)
+function serv_rechercheProfilPublic($nom, $prenom, $desc, $localisation, $telephone)
 {
 	$listProfile = array();
 	$listMail = array();
@@ -281,7 +281,7 @@ function rechercheProfilPublic($nom, $prenom, $desc, $localisation, $telephone)
 //  - (SER_ERR_EMPTY_PARAM_SEARCH) si tous les champs sont vides
 //  - (SER_ERR_DB) si problème avec la base
 //  - La liste des profils contactés suite à la recherche
-function rechercheProfilONG($nom, $prenom, $desc, $localisation, $telephone)
+function serv_rechercheProfilONG($nom, $prenom, $desc, $localisation, $telephone)
 {
 	$listProfile = array();
 	$listMail = array();
@@ -293,7 +293,7 @@ function rechercheProfilONG($nom, $prenom, $desc, $localisation, $telephone)
 	try {
 		$bdd = db_open();
 		$listProfile = db_getSearchProfile($bdd, $nom, $prenom, $desc, $localisation, $telephone);
-		
+
 		// Contacter la liste des personnes
 		foreach ($listProfile as $key => $profil) {
 			$user = db_getUserFromProfile($bdd,$profil);
@@ -312,7 +312,6 @@ function rechercheProfilONG($nom, $prenom, $desc, $localisation, $telephone)
 
 	return $listProfile;
 }
-
 
 //////////////////////////////////////////
 /////////// Fonctions privées ////////////
