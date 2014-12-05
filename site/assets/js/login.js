@@ -32,6 +32,7 @@ $(document).ready(function() {
       data: formData
     })
     .success(function() {
+      
       console.log("success");
 
     })
