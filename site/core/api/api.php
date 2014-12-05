@@ -24,7 +24,7 @@ switch ($_GET['type']) {
 	case ROUTE_SEARCH:
 		handlerSearch();
 		break;
-	case ROUTE_PROFIL:
+	case ROUTE_PROFILE:
 		handlerProfile();
 		break;
 
@@ -238,10 +238,11 @@ function handlerProfile() {
 }
 
 function methodAddProfile() {
+	error_log(print_r($_POST,true));
 	if (!isset($_POST['name']) || !isset($_POST['forename']) || !isset($_POST['desc']) || !isset($_POST['loc']) || !isset($_POST['phone']))
 		errorBadRequest("Missing User Field(s)");
 
-	switch (serv_creerProfile($_POST['name'], $_POST['forename'], $_POST['desc'], $_POST['loc'], $_POST['phone'])) {
+	switch (serv_creerProfil($_POST['name'], $_POST['forename'], $_POST['desc'], $_POST['loc'], $_POST['phone'])) {
 		case SER_ERR_NOM : case SER_ERR_PRENOM : case SER_ERR_DESC : case SER_ERR_LOCALISATION : case SER_ERR_PHONE :
 			errorNotAcceptable("Wrong Field");
 		break;

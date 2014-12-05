@@ -1,4 +1,9 @@
 <?php 
+include_once('../database/Profil.php');
+include_once('../database/Recherche.php');
+include_once('../database/Refuge.php');
+include_once('../database/Type.php');
+include_once('../database/User.php');
 session_start();
 
 include_once('../database/db_functions.php');
@@ -84,7 +89,7 @@ function serv_creerProfil($nom, $prenom, $desc, $localisation, $telephone)
 
 	try {
 		$bdd = db_open();
-		db_createProfile($bdd,$user, $nom, $prenom, $desc, $localisation, $telephone);
+		db_createProfile($bdd, $user, $nom, $prenom, $desc, $localisation, $telephone);
 		db_close($bdd);
 	} catch (Exception $e) {
 		error_log(print_r($e, true));

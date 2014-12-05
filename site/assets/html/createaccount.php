@@ -41,7 +41,7 @@
 
         </div>
 
-        <form action="#" onSumbit="submitSubscription(); return false;">
+        <form action="#" onSubmit="submitSubscription(); return false;">
 
             <div class="row middle">
                 <div class="col-lg-5 ">
@@ -90,7 +90,7 @@
                             And I am there:
                         </div>
                         <div class="form-group">
-                            <input type="text" id="map-form" class="form-control" required id="locationInput" placeholder="Location">
+                            <input type="text" class="form-control" required id="locationInput" placeholder="Location">
                         </div>
                     </div>
                     <div class="map-container">
@@ -136,14 +136,14 @@
         var firstName = $("#firstNameInput").val();
         var descPhysique = $("#descPhysiqueInput").val();
         var phone = $("#phoneInput").val();
-        var location = $("#locationInput").val();
+        var locationVal = $("#locationInput").val();
 
         $(".ajax_error_area *").hide();
         $("#submitButton").hide();
         $("#submitButtonLoader").show();
 
         $.ajax({
-            url: '/api.php?type=0&method=10',
+            url: '/core/api/api.php?type=0&method=10',
             method: 'POST',
             data: {
                 'login': login,
@@ -155,14 +155,14 @@
                 
                 
                 $.ajax({
-                    url: '/api.php?type=3&method=10',
+                    url: '/core/api/api.php?type=3&method=10',
                     method: 'POST',
                     data: {
                         'name': name,
                         'forename': firstName,
                         'desc': descPhysique,
                         'phone': phone,
-                        'loc': location
+                        'loc': locationVal
                     },
                     success: function(data, textStatus, jqXHR) {
                         if (getParameterByName("nextStep") == "search") {

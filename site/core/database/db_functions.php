@@ -82,7 +82,6 @@ function db_getUserFromLogin($bdd, $login)
 */
 function db_createProfile($bdd, $user, $nom, $prenom, $description, $localisation, $telephone)
 {
-
     $db_prepared_insert_profile = $bdd->prepare('INSERT INTO PROFIL (nom, prenom, descPhysique, localisation, telephone, User_idUser) VALUES (:nom, :prenom, :descPhysique, :localisation, :telephone, :User_idUser)');
 
     $db_prepared_insert_profile->bindParam(':nom', $nom);
