@@ -1,12 +1,5 @@
-nuitdelinfo2014
+NUIT DE L'INFO 2014 - ÉQUIPE AZERTEA
 ===============
-
-
-            #NUIT DE L'INFO 2014
-               #ÉQUIPE AZERTEA
-
-
-
 
 ## Compilation et déploiement de l'application web sur BlueMix (MacOSX only)
 
