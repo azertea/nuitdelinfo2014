@@ -8,12 +8,12 @@
 
 
 // On inclut la configuration
-include_once($_SERVER["DOCUMENT_ROOT"] . 'core/includes/config.php');
-include_once($_SERVER["DOCUMENT_ROOT"] . 'core/database/Profil.php');
-include_once($_SERVER["DOCUMENT_ROOT"] . 'core/database/Recherche.php');
-include_once($_SERVER["DOCUMENT_ROOT"] . 'core/database/Refuge.php');
-include_once($_SERVER["DOCUMENT_ROOT"] . 'core/database/Type.php');
-include_once($_SERVER["DOCUMENT_ROOT"] . 'core/database/User.php');
+include_once('../includes/config.php');
+include_once('../database/Profil.php');
+include_once('../database/Recherche.php');
+include_once('../database/Refuge.php');
+include_once('../database/Type.php');
+include_once('../database/User.php');
 
 
 /*
