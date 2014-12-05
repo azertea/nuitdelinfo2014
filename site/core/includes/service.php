@@ -315,8 +315,8 @@ function envoyerMailFromPublic($mailDest)
 	$user = $_SESSION['user'];
 	$mailSource = $user->getEmail();
 
-	$content = "un utilisateur public (" . $mailSource . ") vous a recherché.".
-	envoyerMail($content, $mailDest)
+	$content = "un utilisateur public (" . $mailSource . ") vous a recherché.";
+	envoyerMail($content, $mailDest);
 }
 
 function envoyerMailFromONG($mailDest)
@@ -324,8 +324,8 @@ function envoyerMailFromONG($mailDest)
 	$user = $_SESSION['user'];
 	$mailSource = $user->getEmail();
 
-	$content = "une ONG (" . $mailSource . ") vous a recherché.".
-	envoyerMail($content, $mailDest)
+	$content = "une ONG (" . $mailSource . ") vous a recherché.";
+	envoyerMail($content, $mailDest);
 }
 
 function envoyerMail($content, $mailDest)
