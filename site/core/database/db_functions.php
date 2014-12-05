@@ -8,8 +8,12 @@
 
 
 // On inclut la configuration
-include_once($_SERVER["DOCUMENT_ROOT"] . "core/includes/config.php");
-
+include_once('../includes/config.php');
+include_once('../database/Profil.php');
+include_once('../database/Recherche.php');
+include_once('../database/Refuge.php');
+include_once('../database/Type.php');
+include_once('../database/User.php');
 
 
 /*
@@ -25,16 +29,16 @@ function db_open() {
     }
 }
 
-function db_createAccount($login, $crypted_pass, $mail)
+function db_createAccount($login, $pwd, $mail)
 {
-    Utilisateur $user;
+
     $db_prepared_insert_compte = $bdd->prepare('INSERT INTO USER (login, pwd, email) VALUES (:login, :pwd, :email)');
 
     $db_prepared_insert_compte->bindParam(':login', $login);
     $db_prepared_insert_compte->bindParam(':pwd', $pwd);
-    $db_prepared_insert_compte->bindParam(':email', $email);
+    $db_prepared_insert_compte->bindParam(':email', $mail);
 
-    $db_prepared_insert_compte->execute()
+    $db_prepared_insert_compte->execute();
     $user = db_getUserFromLogin($login);
     
     if(is_null($user))
@@ -47,7 +51,7 @@ function db_createAccount($login, $crypted_pass, $mail)
 
 function db_getUserFromLogin($login)
 {
-    Utilisateur $user = NULL;
+
     $db_prepared_get_user_from_id = $bdd->prepare('SELECT id, login, pwd, email, Refuge_idRefuge, Type_idType FROM USER WHERE login = ?');  
     $db_prepared_get_user_from_id->execute(array($login));
     $row = $db_prepared_get_user_from_id->fetch(); 
@@ -58,19 +62,40 @@ function db_getUserFromLogin($login)
 function db_createProfile($user, $nom, $prenom, $description, $localisation, $telephone)
 {
 
-    $db_prepared_insert_profile = $bdd->prepare('INSERT INTO PROFIL (nom, prenom, descPhysique, localisation, telephone, User_idUserPublic) VALUES (:nom, :prenom, :descPhysique, :localisation, :telephone, :User_idUserPublic)');
+    $db_prepared_insert_profile = $bdd->prepare('INSERT INTO PROFIL (nom, prenom, descPhysique, localisation, telephone, User_idUser) VALUES (:nom, :prenom, :descPhysique, :localisation, :telephone, :User_idUser)');
 
     $db_prepared_insert_profile->bindParam(':nom', $nom);
     $db_prepared_insert_profile->bindParam(':prenom', $prenom);
     $db_prepared_insert_profile->bindParam(':descPhysique', $description);
     $db_prepared_insert_profile->bindParam(':localisation', $localisation);
     $db_prepared_insert_profile->bindParam(':telephone', $telephone);
-    $db_prepared_insert_profile->bindParam(':User_idUserPublic', $user->getIdUser());
+    $db_prepared_insert_profile->bindParam(':User_idUser', $user->getIdUser());
 
     $db_prepared_insert_profile->execute();
 }
 
 
+
+function db_nbProfileFromUser($user)
+{
+    $db_prepared_get_profile_count = $bdd->prepare('SELECT COUNT(idProfil) AS nb FROM PROFIL WHERE User_idUser = ?');
+    $db_prepared_get_profile_count->execute(array($user->getIdUser()));
+    $row = $db_prepared_get_profile_count>fetch(); 
+    return $row['nb'];
+}
+
+function db_getProfileFromUser($user)
+{
+    $db_prepared_get_profile = $bdd->prepare('SELECT idProfil, nom, prenom, descPhysique, localisation, telephone, Refuge_idRefugen, User_idUser AS nb FROM PROFIL WHERE User_idUser = ?');
+    $db_prepared_get_profile->execute(array($user->getIdUser()));
+    $arr = array();
+    while($row = $db_prepared_get_profile->fetch())
+    {
+       $arr[] = 
+            new Profil($row['idProfil'], $row['nom'], $row['prenom'],  $row['descPhysique'], $row['localisation'], $row['telephone'], $row['Refuge_idRefugen'], $row['User_idUser']);
+    }   
+
+}
 /*
     Cette fonction ferme la base de données (passée en paramètre).
 */

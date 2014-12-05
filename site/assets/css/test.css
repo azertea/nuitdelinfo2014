@@ -22,13 +22,23 @@ body {
   height: 80%;
 }
 
-.btn{
+.form-login {
+  visibility: hidden;
+  margin-top: 15px;
+}
+
+.btn-login{
   color: #FFFFFF;
   background-color: #32B76A;
+  margin-top:15px;
 }
-.btn:hover{
+.btn-login:hover{
   color: #32B76A;
   background-color: #FFFFFF;
+}
+.btn-login:focus{
+color: #FFFFFF;
+  background-color: #32B76A;
 }
 
 .head-text {
@@ -55,7 +65,7 @@ body {
 }
 
 .btn-main:hover {
-  color: #006400;
+  color: #32B76A;
   height: 300px;
   width: 300px;
   background-color: #FFFFFF;
@@ -65,9 +75,7 @@ body {
   font-size: 45pt;
 }
 
-.form-login {
-  visibility: hidden;
-}
+
 
 .footer {
   margin-top: 50px;
