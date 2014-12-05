@@ -256,7 +256,7 @@ function rechercheProfilPublic($nom, $prenom, $desc, $localisation, $telephone)
 
 	try {
 		$bdd = db_open();
-		$listProfile = db_getSearchProfile($bdd,$nom, $prenom, $desc, $localisation, $telephone);
+		$listProfile = db_getSearchProfile($bdd, $nom, $prenom, $desc, $localisation, $telephone);
 
 		// Contacter la liste des personnes
 		foreach ($listProfile as $key => $profil) {
@@ -292,7 +292,7 @@ function rechercheProfilONG($nom, $prenom, $desc, $localisation, $telephone)
 
 	try {
 		$bdd = db_open();
-		$listProfile = db_getSearchProfile($bdd,$nom, $prenom, $desc, $localisation, $telephone);
+		$listProfile = db_getSearchProfile($bdd, $nom, $prenom, $desc, $localisation, $telephone);
 
 		// Contacter la liste des personnes
 		foreach ($listProfile as $key => $profil) {
