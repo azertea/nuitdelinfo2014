@@ -37,20 +37,38 @@
 </br>
 
 <div class="row lookingfor">
-Profile
+Profile edition
 </div>
 </br>
         <div class="row">
             <div class="col-lg-1"></div>
             <div class="col-lg-3">
                 [Photo here]
+                <div class="form-group">
+    <label for="exampleInputFile"></label>
+    <input type="file" id="exampleInputFile">
+    <p class="help-block">Modify your picture</p>
+  </div>
             </div>
             <div class="col-lg-1"></div>
             <div class="col-lg-5">
-                données récupérées via la base en PHP
+            //COMMENTAIRE : A PRE REMPLIR AVEC LES DONNEES DE BASE!!!!
+                <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Name">
+                </div>
+                <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                        <textarea name="descPhysique" class="form-control" placeholder="Physical description"></textarea>
+                </div>
+                <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Phone number">
+                </div>
+                <button type="submit" class="btn btn-submit">Editer mon profil</button>
+
             </div>
             <div class="col-lg-2">
-                <button type="submit" class="btn btn-submit">Editer mon profil</button>
             </div>  
 <div class="col-lg-2">
 </div>    

@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 ini_set('display_errors','On');
 /*Fichier aiguillage API */
 include ("../includes/config.php");
@@ -11,7 +11,6 @@ require_once ("../includes/service.php");
 ROUTAGE 
 
 **/
-	print_r($_POST);
 if( !isset($_GET['type']))
 	  errorBadRequest("Missing Field(s)");
 
@@ -177,7 +176,7 @@ function methodConnectUserONG(){
 	if (!isset($_POST['login']) || !isset($_POST['pwd']))
 		errorBadRequest("Missing Field(s)");
 
-	switch(serv_connecterComptePublic($_POST['login'], $_POST['pwd'])) {
+	switch(serv_connecterCompteONG($_POST['login'], $_POST['pwd'])) {
 		
 		case SER_ERR_LOGIN :
 			errorForbidden();
