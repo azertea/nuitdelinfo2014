@@ -9,8 +9,8 @@
 		/* ******************************************************
 		 * 	Attributs
 		 * ******************************************************/
-		private $idType;
-		private $libelle;
+		public $idType;
+		public $libelle;
 
 		public function __construct($idType, $libelle) {
 			$this->idType = $idType;
