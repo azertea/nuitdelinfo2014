@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/test.css">
     <link rel="stylesheet" href="../css/lookingfor.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="../js/map.js"></script>
 
 
     <!-- <link rel="stylesheet" type="text/css" href=""> -->
@@ -74,7 +76,7 @@
                 </div>
                 <div class="form-group">
 
-                    <textarea name="Message" class="form-control" placeholder="Let a message for the person who are searching for you"></textarea>
+                    <textarea name="Message" class="form-control" placeholder="Let a message for the people who are searching for you"></textarea>
                 </div>
                 <button type="button" class="btn btn-login">Get Hope</button>
 
@@ -88,10 +90,13 @@
                         And I am there:
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Location">
+                        <input type="text" id="map-form" class="form-control" placeholder="Location">
                     </div>
                 </div>
-                <div class="lookingfor">MAP</div>
+                <div class="map-container">
+                    <iframe class="map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA-ww8bbI0RaGe1Q927-pdxRDuZ-s6Wh3c&q=Eiffel">
+                    </iframe>
+                </div>
             </div>
         </div>
 
