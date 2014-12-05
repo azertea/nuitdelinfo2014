@@ -51,7 +51,9 @@
   font-size: 45pt;
 }
 
-
+.form-login {
+  visibility: hidden;
+}
 
 .footer {
   margin-top: 50px;
