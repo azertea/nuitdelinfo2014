@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 ini_set('display_errors','On');
 /*Fichier aiguillage API */
 include ("../includes/config.php");
@@ -11,7 +11,6 @@ require_once ("../includes/service.php");
 ROUTAGE 
 
 **/
-	print_r($_POST);
 if( !isset($_GET['type']))
 	  errorBadRequest("Missing Field(s)");
 
