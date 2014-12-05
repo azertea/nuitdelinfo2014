@@ -4,101 +4,105 @@
 	 * Classe correspondante à un profil utilisateur
 	 * @author Yseult B., Malik I.
 	 */
+	class Profil
+	{
 
-	/* ******************************************************
-	 * 	Attributs
-	 * ******************************************************/
-	private idProfil;
-	private nom;
-	private prenom;
-	private descPhysique;
-	private localisation;
-	private telephone;
-	private idRefuge;
-	private idUser;
-
-
-	public function __construct($idProfil, $nom, $prenom,
-								$descPhysique, $localisation,
-								$telephone, $idRefuge, $idUser) {
-		$this->idProfil = $idProfil;
-		$this->nom = $nom;
-		$this->prenom = $prenom;
-		$this->descPhysique = $descPhysique;
-		$this->localisation = $localisation;
-		$this->telephone = $telephone;
-		$this->idRefuge = $idRefuge;
-		$this->idUser = $idUser;
-	}
+		/* ******************************************************
+		 * 	Attributs
+		 * ******************************************************/
+		private $idProfil;
+		private $nom;
+		private $prenom;
+		private $descPhysique;
+		private $localisation;
+		private $telephone;
+		private $idRefuge;
+		private $idUser;
 
 
-	/* ******************************************************
-	 * 	Getters
-	 * ******************************************************/
-
-	public function getIdProfil() {
-		return $this->idProfil;
-	}
-
-	public function getNom() {
-		return $this->nom;
-	}
-
-	public function getPrenom() {
-		return $this->prenom;
-	}
-
-	public function getDescPhysique() {
-		return $this->descPhysique;
-	}
-
-	public function getLocalisation() {
-		return $this->localisation;
-	}
-
-	public function getTelephone() {
-		return $this->telephone;
-	}
-
-	public function getIdRefuge() {
-		return $this->idRefuge;
-	}
-
-	public function getIdUser() {
-		return $this->idUser;
-	}
+		public function __construct($idProfil, $nom, $prenom,
+									$descPhysique, $localisation,
+									$telephone, $idRefuge, $idUser) {
+			$this->idProfil = $idProfil;
+			$this->nom = $nom;
+			$this->prenom = $prenom;
+			$this->descPhysique = $descPhysique;
+			$this->localisation = $localisation;
+			$this->telephone = $telephone;
+			$this->idRefuge = $idRefuge;
+			$this->idUser = $idUser;
+		}
 
 
+		/* ******************************************************
+		 * 	Getters
+		 * ******************************************************/
 
-	/* ******************************************************
-	 * 	Setters
-	 * ******************************************************/
+		public function getIdProfil() {
+			return $this->idProfil;
+		}
 
-	public function setNom($nom) {
-		$this->nom = $nom;
-	}
+		public function getNom() {
+			return $this->nom;
+		}
 
-	public function setPrenom($prenom) {
-		$this->prenom = $prenom;
-	}
+		public function getPrenom() {
+			return $this->prenom;
+		}
 
-	public function setDescPhysique($descPhysique) {
-		$this->descPhysique = $descPhysique;
-	}
+		public function getDescPhysique() {
+			return $this->descPhysique;
+		}
 
-	public function setLocalisation($localisation) {
-		$this->localisation = $localisation;
-	}
+		public function getLocalisation() {
+			return $this->localisation;
+		}
 
-	public function setTelephone($telephone) {
-		$this->telephone = $telephone;
-	}
+		public function getTelephone() {
+			return $this->telephone;
+		}
 
-	public function setIdRefuge($idRefuge) {
-		$this->idRefuge = $idRefuge;
-	}
+		public function getIdRefuge() {
+			return $this->idRefuge;
+		}
 
-	public function setIdUser($idUser) {
-		$this->idUser = $idUser;
+		public function getIdUser() {
+			return $this->idUser;
+		}
+
+
+
+		/* ******************************************************
+		 * 	Setters
+		 * ******************************************************/
+
+		public function setNom($nom) {
+			$this->nom = $nom;
+		}
+
+		public function setPrenom($prenom) {
+			$this->prenom = $prenom;
+		}
+
+		public function setDescPhysique($descPhysique) {
+			$this->descPhysique = $descPhysique;
+		}
+
+		public function setLocalisation($localisation) {
+			$this->localisation = $localisation;
+		}
+
+		public function setTelephone($telephone) {
+			$this->telephone = $telephone;
+		}
+
+		public function setIdRefuge($idRefuge) {
+			$this->idRefuge = $idRefuge;
+		}
+
+		public function setIdUser($idUser) {
+			$this->idUser = $idUser;
+		}
+
 	}
 ?>

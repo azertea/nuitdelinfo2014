@@ -11,6 +11,8 @@ require_once ("../includes/service.php");
 ROUTAGE 
 
 **/
+if(!isset($_GET['method']) || !isset($_GET['type']))
+	  errorBadRequest("Missing Field(s)");
 
 switch ($_GET['type']) {
 	case $ROUTE_USER_PUBLIC :
@@ -232,9 +234,32 @@ function methodAlterProfile(){
 }
 
 
-function handlerSearch(){
+/**
 
+GESTION RECHERCHE
+
+**/
+function handlerSearch(){
+	switch ($_GET['user']) {
+		case $ROUTE_USER_ONG:
+			userONGSearch();			
+		break;
+		case $ROUTE_USER_PUBLIC:
+			userPublicSearch();
+		break;
+	}	
 }
 
+function userPublicSearch(){
+	if (!isset($_POST['name']) || !isset($_POST['forename']) || !isset($_POST['desc']) || !isset($_POST['loc']) || !isset($_POST['phone']))
+		errorBadRequest("Missing User Field(s)");
+	return json_encode(rechercheProfilPublic($_POST['name'],$_POST['forename'],$_POST['desc'],$_POST['loc'],$_POST['phone']);
+}
+
+function userONGSearch(){
+	if (!isset($_POST['name']) || !isset($_POST['forename']) || !isset($_POST['desc']) || !isset($_POST['loc']) || !isset($_POST['phone']))
+		errorBadRequest("Missing User Field(s)");
+	return json_encode(rechercheProfilONG($_POST['name'],$_POST['forename'],$_POST['desc'],$_POST['loc'],$_POST['phone']);
+}
 
 ?>
