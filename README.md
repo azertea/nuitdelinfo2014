@@ -1,7 +1,7 @@
 NUIT DE L'INFO 2014 - ÉQUIPE AZERTEA
 ===============
 
-# Compilation et déploiement de l'application web sur BlueMix (MacOSX only)
+## Compilation et déploiement de l'application web sur BlueMix (MacOSX only)
 
 0. Pré-requis
     - Outils en ligne de commande Git
