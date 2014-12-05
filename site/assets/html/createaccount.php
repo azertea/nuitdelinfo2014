@@ -79,7 +79,7 @@
                     </div>
                     <button type="submit" class="btn btn-login" id="submitButton">Get Hope</button>
                     <button type="button" class="btn btn-login" id="submitButtonLoader" disabled 
-                            style="display:none; background-image:url(); width:"></button>
+                            style="display:none;"><div style="background-image:url(../img/loader.gif); width:16px; height:11px;"></div></button>
 
                 </div>
                 <div class="col-lg-2">
@@ -166,9 +166,9 @@
                     },
                     success: function(data, textStatus, jqXHR) {
                         if (getParameterByName("nextStep") == "search") {
-                            windows.location.href="";
+                            // windows.location.href="";
                         } else {
-                            windows.location.href="";
+                            // windows.location.href="";
                         }
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
@@ -186,7 +186,8 @@
                 $("#submitButton").show();
             }
         });
-
+        
+        return false;
    }
 
 </script>
