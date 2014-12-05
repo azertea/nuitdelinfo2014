@@ -12,7 +12,6 @@ body {
   width: 80%;
   height: 100%;
   text-align: center;
-  
 }
 
 .subtitle{
@@ -78,13 +77,8 @@ color: #FFFFFF;
   font-size: 45pt;
 }
 
-
-
-.footer {
-  margin-top: 50px;
-  height: 150px;
+.footer-content{
+  text-align: center;
 }
 
-.footer-content {
-  height: 100%;
-}
+

@@ -3,8 +3,8 @@
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `Nuitdelinfo2014`;
+INSERT INTO `Nuitdelinfo2014`.`Type` (`idType`, `libelle`) VALUES (0, 'Public');
 INSERT INTO `Nuitdelinfo2014`.`Type` (`idType`, `libelle`) VALUES (1, 'ONG');
-INSERT INTO `Nuitdelinfo2014`.`Type` (`idType`, `libelle`) VALUES (2, 'Public');
 
 COMMIT;
 
@@ -28,9 +28,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `Nuitdelinfo2014`;
-INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (1,'Haddock', sha1('haddock'),'c.haddock@br.br',NULL,2);
-INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (2,'Hiromu', sha1('hiromu'),'h@japan.jp',NULL,2);
-INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (3,'Naruto',sha1('naruto'),'naruto@japan.jp',NULL,2);
+INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (1,'Haddock', sha1('haddock'),'c.haddock@br.br',NULL,0);
+INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (2,'Hiromu', sha1('hiromu'),'h@japan.jp',NULL,0);
+INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (3,'Naruto',sha1('naruto'),'naruto@japan.jp',NULL,0);
 INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (4,'ONGParis',sha1('paris'),'p@p.paris',1,1);
 INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (5,'ONGBruxelles',sha1('bruxelles'),'b@b.bruxelles',2,1);
 INSERT INTO `Nuitdelinfo2014`.`User` (`idUser`, `login`, `pwd`, `email`, `Refuge_idRefuge`, `Type_idType`) VALUES (6,'ONGTokyo',sha1('tokyo'),'t@t.tokyo',3,1);

@@ -48,7 +48,7 @@ function handlerUserPublic(){
 		break;*/
 
 		case ROUTE_METHOD_ALTER:
-			methodDelUserPublic();
+			methodAlterUserPublic();
 		break;
 
 		case ROUTE_METHOD_CONNECT:
@@ -62,6 +62,14 @@ function handlerUserPublic(){
 		case ROUTE_METHOD_ISCONNECTED:
 		 	methodIsConnectedUserPublic();
 		break;
+		
+		case ROUTE_METHOD_CAN_ADD:
+			methodCanAddProfile();
+		break;
+		
+		case ROUTE_METHOD_GET_PROFILE_LIST:
+			methodGetListProfile();
+		break;
 
 	}
 }
@@ -74,7 +82,7 @@ function methodAddUserPublic () {
 	
 	
 	switch(serv_creerCompte($_POST['login'],$_POST['pwd1'],$_POST['pwd2'], $_POST['email'])) {
-		case SER_ERR_LOGIN : case $SER_ERR_PASS :  
+		case SER_ERR_LOGIN : case SER_ERR_PASS :  
 			errorForbidden();
 		break;
 		case  SER_ERR_MAIL :
@@ -165,7 +173,15 @@ function handlerUserONG(){
 		break;
 
 		case ROUTE_METHOD_DISCONNECT:
-			methodIsConnectedUserONG();
+			methodDisconnectUserONG();
+		break;
+		
+		case ROUTE_METHOD_CAN_ADD:
+			methodCanAddProfile();
+		break;
+		
+		case ROUTE_METHOD_GET_PROFILE_LIST:
+			methodGetListProfile();
 		break;
 
 	}	
@@ -218,7 +234,7 @@ function methodAddProfile() {
 		errorBadRequest("Missing User Field(s)");
 
 	switch (serv_creerProfile($_POST['name'], $_POST['forename'], $_POST['desc'], $_POST['loc'], $_POST['phone'])) {
-		case SER_ERR_NOM : case $SER_ERR_PRENOM : case $SER_ERR_DESC : case $SER_ERR_LOCALISATION : case $SER_ERR_PHONE :
+		case SER_ERR_NOM : case SER_ERR_PRENOM : case SER_ERR_DESC : case SER_ERR_LOCALISATION : case SER_ERR_PHONE :
 			errorNotAcceptable("Wrong Field");
 		break;
 
@@ -234,6 +250,13 @@ function methodAlterProfile(){
 	/*TODO SWITCH*/
 }
 
+function methodCanAddProfile(){
+	echo (json_encode((serv_peutAjouterProfil()) ? 1 : 0));
+}
+
+function methodGetListProfile(){
+	echo (json_encode(serv_listeProfil()));
+}
 
 /**
 
