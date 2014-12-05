@@ -1,12 +1,14 @@
 //connect en tant que ong
 
 
-// recherche ONG
+// recherche Public
 $(document).ready(function($) {
-		$("#form_submit").click(function(event) {
+
+
+	$("#form_submit").click(function(event) {
 		$("#result").empty();
 		$.ajax({
-			url: '../../core/api/api.php?type=2&user=1',
+			url: '../../core/api/api.php?type=2&user=0',
 			type: 'POST',
 			dataType: 'json',
 			data: {	name: $("#form_name").val(),
@@ -20,9 +22,9 @@ $(document).ready(function($) {
 			
 			console.log("success");
 			$("#result").append('<div type="button" class="lookingfor"><p>Number of persons matching your request : '+data.length+'</p>');
-			for (var i = 0 ; i < data.length ; i++ ) {
-				$("#result").append('<div type="button" class="lookingfor"><p>'+data[i]['nom']+' '+data[i]['prenom']+'</p></div>');
-			}
+			/*for (var i = 0; i < data.length; ++i) 
+				$("#result").append('<p>'+data[i]['prenom']+'</p>');*/
+
 			$("#result").append('</p></div>');
 
 		})
@@ -30,6 +32,5 @@ $(document).ready(function($) {
 			console.log("error");
 		})
 	});
-	
 });
 // recherche public
