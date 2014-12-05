@@ -114,7 +114,7 @@ function serv_connecterComptePublic($login, $pass)
 
 	try {
 		$bdd = db_open();
-		$user = db_getUser($bdd,$login);
+		$user = db_getUserFromLogin($bdd,$login);
 		db_close($bdd);
 
 		if (is_null($user)) {
