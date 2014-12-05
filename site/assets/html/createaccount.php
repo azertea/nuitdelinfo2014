@@ -28,7 +28,7 @@
             <div class="col-lg-3">
 
             </div>
-            <a href="../../index.html">
+            <a href="../../index.php">
                 <div class="col-lg-5 logoContainer">
                     <img class="logoImg" href="index.html" src="../img/logo.png" alt="">
                 </div>
@@ -102,13 +102,16 @@
 
         </form>
 
-        <div class="footer">
-            <div class="row">
-                <div class="col-lg-12">
-                    CECI EST UN FOOTER
+         <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <div class="footer">
+                <div class="col-lg-6 footer-content-left">
+                    <a class="footer-content-left" href="Eggs/Cat_game.html"><span class="glyphicon glyphicon-gift" aria-hidden="true"></span></a>
                 </div>
-            </div>
-        </div>
+                <div class="col-lg-6 footer-content-right">
+                    <a class="footer-content-right" href="about.html">About</span></a>
+                </div>
+  </div>
+</nav>
     </div>
 </body>
 

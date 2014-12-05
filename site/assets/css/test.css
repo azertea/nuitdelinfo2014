@@ -12,7 +12,6 @@ body {
   width: 80%;
   height: 100%;
   text-align: center;
-  
 }
 
 .subtitle{
@@ -78,13 +77,20 @@ color: #FFFFFF;
   font-size: 45pt;
 }
 
-
-
-.footer {
-  margin-top: 50px;
-  height: 150px;
+.footer-content-left,.footer-content-right{
+  text-align: center;
+  color: #32B76A;
+  font-size: 25pt;
+}
+.footer-content-left:hover{
+  text-align: center;
+  color: #cccccc;
+  font-size: 25pt;
 }
 
-.footer-content {
-  height: 100%;
+.footer-content-right:hover{
+  text-align: center;
+  text-decoration: none;
+  color: #cccccc;
+  font-size: 25pt;
 }
