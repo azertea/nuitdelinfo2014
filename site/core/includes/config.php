@@ -6,7 +6,7 @@
 
 */
 
-define("DB_SRV_HOSTNAME", "127.0.0.1");
+define("DB_SRV_HOSTNAME", "192.168.0.104");
 define("DB_SRV_PORT", "3306");
 define("DB_CRD_USER", "ndl2014");
 define("DB_CRD_PASSWORD", "azertea");
