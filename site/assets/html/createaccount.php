@@ -166,9 +166,9 @@
                     },
                     success: function(data, textStatus, jqXHR) {
                         if (getParameterByName("nextStep") == "search") {
-                            // windows.location.href="";
+                            window.location.href="lookingfor.php";
                         } else {
-                            // windows.location.href="";
+                            window.location.href="imhere.php";
                         }
                     },
                     error: function(jqXHR, textStatus, errorThrown) {

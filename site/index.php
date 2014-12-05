@@ -71,7 +71,7 @@
         <div class="row middle">
             <div class="col-lg-5">
                 <a href="./assets/html/lookingfor.php">
-                    <button type="button" href="./assets/html/createaccount.php?next=search" id="buttonLookFor" class="btn btn-main">
+                    <button type="button" href="./assets/html/createaccount.php?nextStep=search" id="buttonLookFor" class="btn btn-main">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                         </br>
                         </br>
@@ -84,7 +84,7 @@
 
             </div>
             <div class="col-lg-5">
-                <a href="./assets/html/createaccount.php?next=iamhere"  id="buttonIAmHere" >
+                <a href="./assets/html/createaccount.php?nextStep=iamhere" id="buttonIAmHere" >
                     <button type="button" class="btn btn-main">
 
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -127,7 +127,7 @@ $(document).ready(function() {
 
     $.ajax({
         "type": "GET",
-        "url": "/core/api/api.php?type=0&method=60"
+        "url": "/core/api/api.php?type=0&method=60",
         success: function(data) {
             if (data == "1") {
                 alreadyLoggedIn();
