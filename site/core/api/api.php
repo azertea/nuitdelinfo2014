@@ -22,7 +22,6 @@ switch ($_GET['type']) {
 		handlerUserONG();
 		break;
 	case ROUTE_SEARCH:
-		print_r("ROUTE SEARCH");
 		handlerSearch();
 		break;
 	case ROUTE_PROFIL:
@@ -242,10 +241,8 @@ GESTION RECHERCHE
 
 **/
 function handlerSearch(){
-	print_r("HANDLER SEARCH");
 	switch ($_GET['user']) {
 		case ROUTE_USER_ONG:
-			print_r("USER_ONG_SEARCH");
 			userONGSearch();			
 		break;
 		case ROUTE_USER_PUBLIC:
@@ -261,11 +258,11 @@ function userPublicSearch(){
 }
 
 function userONGSearch(){
-
-	print_r($_POST);
 	if (!isset($_POST['name']) || !isset($_POST['forename']) || !isset($_POST['desc']) || !isset($_POST['loc']) || !isset($_POST['phone']))
 		errorBadRequest("Missing User Field(s)");
-	echo( json_encode(rechercheProfilONG($_POST['name'],$_POST['forename'],$_POST['desc'],$_POST['loc'],$_POST['phone'])));
+	$test = rechercheProfilONG($_POST['name'],$_POST['forename'],$_POST['desc'],$_POST['loc'],$_POST['phone']);
+
+	echo(json_encode($test));
 }
 
 ?>
