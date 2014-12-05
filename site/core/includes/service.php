@@ -41,6 +41,7 @@ function serv_creerCompte($login, $pass1, $pass2, $mail)
 		$user = db_createAccount($bdd,$login,sha1($pass1),$mail);
 		db_close($bdd);
 	} catch (Exception $e) {
+		error_log(print_r($e, true));
 		return SER_ERR_DB;
 	}
 
@@ -86,6 +87,7 @@ function serv_creerProfil($nom, $prenom, $desc, $localisation, $telephone)
 		db_createProfile($bdd,$user, $nom, $prenom, $desc, $localisation, $telephone);
 		db_close($bdd);
 	} catch (Exception $e) {
+		error_log(print_r($e, true));
 		return SER_ERR_DB;
 	}
 
@@ -129,6 +131,7 @@ function serv_connecterComptePublic($login, $pass)
 			return SER_ERR_USER_WRONG_PWD;
 		}
 	} catch (Exception $e) {
+		error_log(print_r($e, true));
 		return SER_ERR_DB;
 	}
 
@@ -174,6 +177,7 @@ function serv_connecterCompteONG($login, $pass)
 			return SER_ERR_USER_WRONG_PWD;
 		}
 	} catch (Exception $e) {
+		error_log(print_r($e, true));
 		return SER_ERR_DB;
 	}
 
@@ -211,6 +215,7 @@ function peutAjouterProfil()
 		$nbProfile = db_nbProfileFromUser($bdd,$user);
 		db_close($bdd);
 	} catch (Exception $e) {
+		error_log(print_r($e, true));
 		return SER_ERR_DB;
 	}
 
@@ -229,6 +234,7 @@ function listeProfil()
 		$listProfile = db_getProfileFromUser($bdd,$user);
 		db_close($bdd);
 	} catch (Exception $e) {
+		error_log(print_r($e, true));
 		return SER_ERR_DB;
 	}
 
@@ -260,6 +266,7 @@ function rechercheProfilPublic($nom, $prenom, $desc, $localisation, $telephone)
 
 		db_close($bdd);
 	} catch (Exception $e) {
+		error_log(print_r($e, true));
 		return SER_ERR_DB;
 	}
 
@@ -295,6 +302,7 @@ function rechercheProfilONG($nom, $prenom, $desc, $localisation, $telephone)
 
 		db_close($bdd);
 	} catch (Exception $e) {
+		error_log(print_r($e, true));
 		return SER_ERR_DB;
 	}
 
