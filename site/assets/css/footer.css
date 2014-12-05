@@ -1,0 +1,32 @@
+.footer {
+  color: #FFFFFF;
+  background-color: #32B76A;
+}
+
+.footer-content {
+	text-align: center;
+}
+
+.footer-content h2 {
+  color: #FFFFFF;
+  font-family: helvetica;
+}
+
+.footer-content h2:hover {
+  font-weight: 600;
+}
+
+.footer-content p {
+  border-top: 1px solid #FFFFFF;
+}
+
+/*
+
+    <div class="footer container-fluid">
+        <div class="footer-content col-md-8 col-md-offset-2">
+            <h2 class="subtitle">CECI EST UN FOOTER</h2>
+            <p>texte texte</p>
+        </div>
+    </div>
+
+    */
