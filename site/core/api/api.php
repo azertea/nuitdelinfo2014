@@ -128,11 +128,11 @@ function methodConnectUserPublic() {
 	}
 }
  function methodIsConnectedUserPublic() {
- 	echo(json_encode ((estConnecte()) ? 1 : 0));
+ 	echo(json_encode ((serv_estConnecte()) ? 1 : 0));
  }
 
  function methodDisconnectUserPublic(){
- 	seDeconnecter();
+ 	serv_seDeconnecter();
  }
 
 /**
@@ -189,11 +189,11 @@ function methodConnectUserONG(){
 }
 
  function methodIsConnectedUserONG() {
- 	echo (json_encode ((estConnecte()) ? 1 : 0));
+ 	echo (json_encode ((serv_estConnecte()) ? 1 : 0));
  }
 
  function methodDisconnectUserONG(){
- 	seDeconnecter();
+ 	serv_seDeconnecter();
  }
 
 /**
@@ -254,15 +254,13 @@ function handlerSearch(){
 function userPublicSearch(){
 	if (!isset($_POST['name']) || !isset($_POST['forename']) || !isset($_POST['desc']) || !isset($_POST['loc']) || !isset($_POST['phone']))
 		errorBadRequest("Missing User Field(s)");
-	echo (json_encode(rechercheProfilPublic($_POST['name'],$_POST['forename'],$_POST['desc'],$_POST['loc'],$_POST['phone'])));
+	echo (json_encode(serv_rechercheProfilPublic($_POST['name'],$_POST['forename'],$_POST['desc'],$_POST['loc'],$_POST['phone'])));
 }
 
 function userONGSearch(){
 	if (!isset($_POST['name']) || !isset($_POST['forename']) || !isset($_POST['desc']) || !isset($_POST['loc']) || !isset($_POST['phone']))
 		errorBadRequest("Missing User Field(s)");
-	$test = rechercheProfilONG($_POST['name'],$_POST['forename'],$_POST['desc'],$_POST['loc'],$_POST['phone']);
-
-	echo(json_encode($test));
+	echo(json_encode(serv_rechercheProfilONG($_POST['name'],$_POST['forename'],$_POST['desc'],$_POST['loc'],$_POST['phone'])));
 }
 
 ?>
