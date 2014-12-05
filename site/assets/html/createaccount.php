@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/test.css">
     <link rel="stylesheet" href="../css/lookingfor.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="../js/map.js"></script>
 
 
     <!-- <link rel="stylesheet" type="text/css" href=""> -->
@@ -43,62 +41,66 @@
 
         </div>
 
-        <div class="row middle">
-            <div class="col-lg-5 ">
-                <div class="form-group form-looking">
-                    
+        <form action="#" onSumbit="submitSubscription(); return false;">
+
+            <div class="row middle">
+                <div class="col-lg-5 ">
+                    <div class="form-group form-looking">
+                        
                         <div class="lookingfor">Account informations :</div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Login">
+                        <div class="form-group">
+                            <input type="text" class="form-control" required id="loginInput" placeholder="Login">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" required id="passwordInput" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" required id="password2Input" placeholder="Confirm password">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" required id="emailInput" placeholder="Email">
+                        </div>
+                        <div class="lookingfor">I am :</div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" required id="nameInput" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" required id="firstNameInput" placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="descPhysique" class="form-control" required id="descPhysiqueInput" placeholder="Physical description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" required id="phoneInput" placeholder="Phone number">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Password">
+                    <div class="ajax_error_area">
+                        <div class="alert alert-danger ajax-error-alert" style="display:none;" >Ajax error</div>
                     </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Confirm password">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Email@adress">
-                    </div>
-                    <div class="lookingfor">I am :</div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">
-                    </div>
-                    <div class="form-group">
-                        <textarea name="descPhysique" class="form-control" placeholder="Physical description"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Phone number">
-                    </div>
-                </div>
-                <div class="form-group">
+                    <button type="submit" class="btn btn-login" id="submitButton">Get Hope</button>
+                    <button type="button" class="btn btn-login" id="submitButtonLoader" disabled 
+                            style="display:none; background-image:url(); width:"></button>
 
-                    <textarea name="Message" class="form-control" placeholder="Let a message for the people who are searching for you"></textarea>
                 </div>
-                <button type="button" class="btn btn-login">Get Hope</button>
-
-
-            </div>
-            <div class="col-lg-2">
-            </div>
-            <div class="col-lg-5">
-                <div class="form-group">
-                    <div class="lookingfor">
-                        And I am there:
-                    </div>
+                <div class="col-lg-2">
+                </div>
+                <div class="col-lg-5">
                     <div class="form-group">
-                        <input type="text" id="map-form" class="form-control" placeholder="Location">
+                        <div class="lookingfor">
+                            And I am there:
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="map-form" class="form-control" required id="locationInput" placeholder="Location">
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <iframe class="map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA-ww8bbI0RaGe1Q927-pdxRDuZ-s6Wh3c&q=Eiffel">
+                        </iframe>
                     </div>
                 </div>
-                <div class="map-container">
-                    <iframe class="map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA-ww8bbI0RaGe1Q927-pdxRDuZ-s6Wh3c&q=Eiffel">
-                    </iframe>
-                </div>
             </div>
-        </div>
+
+        </form>
 
         <div class="footer">
             <div class="row">
@@ -109,5 +111,81 @@
         </div>
     </div>
 </body>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="../js/map.js"></script>
+
+<script type="text/javascript">
+
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+   function submitSubscription() {
+        var login = $("#loginInput").val();
+        var password = $("#passwordInput").val();
+        var password2 = $("#password2Input").val();
+        var email = $("#emailInput").val();
+        var name = $("#nameInput").val();
+        var firstName = $("#firstNameInput").val();
+        var descPhysique = $("#descPhysiqueInput").val();
+        var phone = $("#phoneInput").val();
+        var location = $("#locationInput").val();
+
+        $(".ajax_error_area *").hide();
+        $("#submitButton").hide();
+        $("#submitButtonLoader").show();
+
+        $.ajax({
+            url: '/api.php?type=0&method=10',
+            method: 'POST',
+            data: {
+                'login': login,
+                'pwd1': password,
+                'pwd2': password2,
+                'email': email,
+            },
+            success: function(data, textStatus, jqXHR) {
+                
+                
+                $.ajax({
+                    url: '/api.php?type=3&method=10',
+                    method: 'POST',
+                    data: {
+                        'name': name,
+                        'forename': firstName,
+                        'desc': descPhysique,
+                        'phone': phone,
+                        'loc': location
+                    },
+                    success: function(data, textStatus, jqXHR) {
+                        if (getParameterByName("nextStep") == "search") {
+                            windows.location.href="";
+                        } else {
+                            windows.location.href="";
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        $(".ajax-error-alert-profile").show(300);
+                        $("#submitButtonLoader").hide();
+                        $("#submitButton").show();
+                    }
+                });
+
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                $(".ajax-error-alert-account").show(300);
+                $("#submitButtonLoader").hide();
+                $("#submitButton").show();
+            }
+        });
+
+   }
+
+</script>
 
 </html>
