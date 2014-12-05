@@ -59,6 +59,9 @@
                     <div class="form-group">
                         <input id= "form_phonenumber" type="text" class="form-control" placeholder="Phone number">
                     </div>
+                    <div class="form-group">
+                    <textarea id= "form_message" name="Message" class="form-control" placeholder="Let a message for the person you are searching for"></textarea>
+                    </div>
                 </div>
                 <button type="button" class="btn btn-login" id="form_submit">Submit</button>
 
@@ -67,23 +70,20 @@
             </div>
             <div class="col-lg-5">
                 <div class="form-group">
-                    And he should be there :
+                    <div class="lookingfor">
+                    And he should be there :</div>
                     <div class="form-group">
                         <input id= "form_location" type="text" class="form-control" placeholder="Location">
                     </div>
                 </div>
-                MAP
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="form-group">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-7">
-                    <textarea id= "form_message" name="Message" class="form-control" placeholder="Let a message for the person you are searching for"></textarea>
+                <div class="map-container">
+                    <iframe class="map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA-ww8bbI0RaGe1Q927-pdxRDuZ-s6Wh3c&q=Eiffel">
+                    </iframe>
                 </div>
             </div>
         </div>
+
+        
         <div id="result">
 
         </div>

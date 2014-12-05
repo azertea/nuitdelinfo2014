@@ -41,8 +41,10 @@
             <div class="col-lg-2 ">
 
                 <button type="button" class="btn btn-login">Login</button>
-                <br/> <input id="isONG" type="checkbox">
+                <br/> 
                 <form id="form-login" role="form" class="form-login" >
+                    <input id="isONG" type="checkbox"> HOPE Agent?
+                </br></br>
                     <div class="form-group">
                         <input type="text" id="pseudo" name="login" class="form-control" id="exampleInputEmail1" placeholder="Login">
                     </div>
