@@ -132,35 +132,35 @@ function db_getProfileFromUser($bdd, $user)
     nom, prénom, à la localisation et au numéro de téléphone passé en paramètres.
     (Ils peuvent être nuls mais au moins un ne l'est pas)
 */
-function db_getSearchProfile($bdd, $nom, $prenom, $localisation, $telephone)
+function db_getSearchProfile($bdd, $nom, $prenom, $desc, $localisation, $telephone)
 {
     //On initialise la string de la requête sans les conditions
-    $request = 'SELECT idProfil, nom, prenom, descPhysique, localisation, telephone, Refuge_idRefuge, User_idUser FROM PROFIL WHERE';
+    $request = 'SELECT idProfil, nom, prenom, descPhysique, localisation, telephone, Refuge_idRefuge, User_idUser FROM PROFIL WHERE ';
     $arr_args;
     
     //On vérifie pour chaque argument s'il existe
     //Pour le rajouter à la condition de requête et dans les tableau d'arguments
-    if(!is_null($nom))
+    if(!empty($nom))
     {
-        $request = $request . 'UPPER(nom) LIKE UPPER(?) AND';
+        $request = $request . 'UPPER(nom) LIKE UPPER(?) AND ';
         $arr_args[] = '%' . $nom . '%';
     }
     
-    if(!is_null($prenom))
+    if(!empty($prenom))
     {
-        $request = $request . 'UPPER(prenom) LIKE UPPER(?) AND';
+        $request = $request . 'UPPER(prenom) LIKE UPPER(?) AND ';
         $arr_args[] = '%' . $prenom . '%';
     }
     
-    if(!is_null($localisation))
+    if(!empty($localisation))
     {
-        $request = $request . 'UPPER(localisation) LIKE UPPER(?) AND';
+        $request = $request . 'UPPER(localisation) LIKE UPPER(?) AND ';
         $arr_args[] = '%' . $localisation . '%';
     }
     
-    if(!is_null($telephone))
+    if(!empty($telephone))
     {
-        $request = $request . 'UPPER(telephone) LIKE UPPER(?) AND';
+        $request = $request . 'UPPER(telephone) LIKE UPPER(?) AND ';
         $arr_args[] = '%' . $telephone . '%';
     }
     
