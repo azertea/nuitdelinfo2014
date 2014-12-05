@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/test.css">
+    <link rel="stylesheet" href="../css/lookingfor.css">
+
 
     <!-- <link rel="stylesheet" type="text/css" href=""> -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -23,51 +25,67 @@
 
         <div class="row">
 
-<div class="col-lg-3">
+            <div class="col-lg-3">
 
             </div>
-            <div class="col-lg-5 logoContainer">
-                <a href="../../index.html">
-                <img class="logoImg" href="index.html" src="../img/logo.png" alt="">
+            <a href="../../index.html">
+                <div class="col-lg-5 logoContainer">
+                    <img class="logoImg" href="index.html" src="../img/logo.png" alt="">
+                </div>
             </a>
+
+
+            <div class="col-lg-2">
+
             </div>
 
         </div>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <span class="subtitle">I am :</span> 
-                <div class="form-group">
-  <input type="text" class="form-control" placeholder="Name">
-</div>
-<div class="form-group">
-  <input type="text" class="form-control" placeholder="First Name">
-</div>
-<div class="form-group">
-  <textarea name="descPhysique" class="form-control" placeholder="Physical description"></textarea>
-</div>
+        <div class="row middle">
+            <div class="col-lg-5 ">
+                <div class="form-group form-looking">
 
-<div class="form-group">
-  <input type="text" class="form-control" placeholder="Phone number">
-</div>
+                    <div type="button" class="lookingfor">I am</div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="descPhysique" class="form-control" placeholder="Physical description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Phone number">
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <textarea name="Message" class="form-control" placeholder="Let a message for the person you are searching for"></textarea>
+                </div>
+                <button type="button" class="btn btn-login">Submit</button>
+
 
             </div>
-<div class="col-lg-2">
-</div>    
+            <div class="col-lg-2">
+            </div>
             <div class="col-lg-5">
-                And I'm here :
                 <div class="form-group">
-  <input type="text" class="form-control" placeholder="Location">
-</div>
-                MAP
+                    <div class="lookingfor">
+                        And I am :
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Location">
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe class="map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA-ww8bbI0RaGe1Q927-pdxRDuZ-s6Wh3c
+    &q=Space+Needle,Seattle+WA">
+                    </iframe>
+                </div>
             </div>
         </div>
 
-
-        <div class="row">
-
-        </div>
-        
         <div class="footer">
             <div class="row">
                 <div class="col-lg-12">
@@ -75,16 +93,6 @@
                 </div>
             </div>
         </div>
-
-    </div>
-</br>
-    <div class="row">
-        <div class="impu-group">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-7">
-  <textarea name="Message" class="form-control" placeholder="Let a message"></textarea>
-</div>
-</div>
     </div>
 </body>
 
